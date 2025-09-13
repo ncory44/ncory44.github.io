@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const rect = aboutSection.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        if (rect.top < windowHeight * 0.75) {  // When about section enters viewport
+        if (rect.top < windowHeight * 0.75) {
             aboutSection.classList.add("fade-in");
         }
     }
@@ -19,12 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function openForm() {
         document.getElementById('contactPopup').style.display = "block";
     }
-
     function closeForm() {
         document.getElementById('contactPopup').style.display = "none";
     }
 
-    // Listeners for popup
+    // Expose globally so the navbar <a onclick="openForm()"> works
+    window.openForm = openForm;
+    window.closeForm = closeForm;
+
+    // Listeners for popup button & close X
     document.getElementById('openPopupBtn').addEventListener("click", openForm);
     document.getElementById('closePopupBtn').addEventListener("click", closeForm);
 

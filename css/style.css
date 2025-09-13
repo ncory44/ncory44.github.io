@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* ---------- Palette Tokens ---------- */
+:root{
+  --ink:#0d0f1a;
+  --crt:#1e1e1e;
+  --phosphor:#2cac05;
+  --magenta:#d7005c;
+  --amber:#ffb343;
+  --sun:#f9f871;
+  --paper:#f2f2f2;
+}
 
 /***** ANIMATIONS *****/
 /*contact bounce animation*/
@@ -12,50 +24,38 @@
 
 /*background vid zoom in and out*/
 @keyframes zoomInOut {
-    0% {
-        transform: scale(1, 1);
-    }
-    50% {
-        transform: scale(1.05, 1.05);
-    }
-    100% {
-        transform: scale(1, 1);
-    }
+    0% { transform: scale(1, 1); }
+    50% { transform: scale(1.05, 1.05); }
+    100% { transform: scale(1, 1); }
 }
 
 /***** GENERAL STYLING *****/
 /*html*/
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 /* Body */
 body {
-    margin: 0%; /* Displays all the way to the edge of the screen */
+    margin: 0%;
+    background: var(--ink);
+    color: var(--paper);
 }
 
 /* Heading 1 elements */
 h1 {
     text-transform: uppercase;
     font-family: "Black Han Sans", serif;
-    text-align: center; /* Centering all h1 elements */
-    margin-top: 3%; /* Adds a small margin above h1 elements */
+    text-align: center;
+    margin-top: 3%;
     color: #000080;
     transition: transform .5s ease-in-out;
     transform: scale(1);
 }
 
 /* Heading 1 element hover effect */
-h1:hover {
-    filter: grayscale(5%);
-    transform: scale(1.05);
-    transition: transform .5s; /* This causes the transformation to last 1 second */
-}
+h1:hover { filter: grayscale(5%); transform: scale(1.05); transition: transform .5s; }
 
 /* Styling for portfolio title text */
-.yellow-text {
-    color: #f9f871; /* This is used to change the color of the portfolio title text */
-}
+.yellow-text { color: var(--sun); }
 
 /* Paragraph elements */
 p {
@@ -68,39 +68,31 @@ p {
     transition: transform .5s ease-in-out;
     transform: scale(1);
 }
+p:hover { transition: transform .5s; transform: scale(1.01); }
 
-p:hover {
-    transition: transform .5s;
-    transform: scale(1.01);
-}
-
-/* Center class - this applies to all elements with the class "center" */
-.center {
-    text-align: center;
-    transition: transform 1s ease-in-out;
-    transform: scale(1);
-}
-
-.center:hover {
-    transition: transform 1s;
-    transform: scale(1.1);
-}
+/* Center class */
+.center { text-align: center; transition: transform 1s ease-in-out; transform: scale(1); }
+.center:hover { transition: transform 1s; transform: scale(1.1); }
 
 /* Anchor elements */
-a {
-    color: #d7005c;
-}
+a { color: var(--magenta); }
 
 /* Quotation elements */
-q {
-    font-style: italic; /* This makes the quote italicized */
-}
+q { font-style: italic; }
+
+/* Pixel rendering helper */
+.pixel { image-rendering: pixelated; image-rendering: crisp-edges; }
+
+/* Terminal text + blink */
+.term { font-family: "VT323", monospace; color: var(--sun); }
+.blink { animation: blink 1s steps(2, end) infinite; }
+@keyframes blink { 0%,50%{opacity:1} 50.1%,100%{opacity:0} }
 
 /* Image elements */
 img {
     filter: grayscale(75%);
     border-radius: 8px;
-    max-width: 100%; /*all images stay within the width of their container */
+    max-width: 100%;
     height: 340px;
     display: block;
     margin-left: auto;
@@ -108,52 +100,36 @@ img {
     transition: transform .5s ease-in-out;
     transform: scale(1);
 }
+img:hover { filter: grayscale(5%); transition: transform .5s; transform: scale(1.08); }
 
-/* Image element hover effects */
-img:hover {
-    filter: grayscale(5%);
-    transition: transform .5s;
-    transform: scale(1.08);
-}
-
-/* The @media rule is used in media queries to apply different styles for different media/types of devices */
 /* On screens 576px and smaller the images will be 100px tall and centered vertically in the column */
 @media screen and (max-width: 576px) {
-    img {
-        height: 100px;
-        margin-top: 150px;
-    }
+    img { height: 100px; margin-top: 150px; }
 }
 
 /* FOOTER */
-footer {
-    padding: 2%;
-    background-color: #ffb343;
-}
+footer { padding: 2%; background-color: var(--amber); }
 
 /***** NAVBAR STYLING *****/
 .Navbar {
     overflow: hidden;
-    background-color: #000080;
+    background-color: var(--ink);
     position: fixed;
-    top: 0; /* no space above bar*/
+    top: 0;
     width: 100%;
     z-index: 1;
-    -webkit-animation: moveNav 1s; /* This applies the moveNav animation below for Safari 4.0 - 8.0 */
-    animation: moveNav 1s; /* This applies the moveNav animation for all other browsers */
+    -webkit-animation: moveNav 1s;
+    animation: moveNav 1s;
 }
 
 /* moveNav animation effect for moving the nav bar in from the left of the screen */
-@keyframes moveNav {
-    from {left: -100vw;} /* The navbar is starting off screen to the left */
-    to {left: 0vw;} /* This moves the navbar into place on the screen */
-}
+@keyframes moveNav { from {left: -100vw;} to {left: 0vw;} }
 
 /* NAVBAR LINKS */
 .Navbar a {
     float: left;
     display: block;
-    color: #f9f871;
+    color: var(--sun);
     padding: 14px 16px;
     text-decoration: none;
     font-family: "Economica", serif;
@@ -161,34 +137,22 @@ footer {
     text-align: center;
     position: relative;
     -webkit-animation: moveNavText 3s;
-    animation: moveNavText 3s; /* Applies the movennavtext animation for 5.75s */
+    animation: moveNavText 3s;
 }
 
-/* moveNavText animation effect for moving the navbar text from above the view to the navbar */
-@keyframes moveNavText {
-    from {top: -100vw;} /* This sets the navbar text 100% above the viewport */
-    to {top: 0vw;} /* This lowers the navbar text onto the navbar */
-}
+/* moveNavText animation effect */
+@keyframes moveNavText { from {top: -100vw;} to {top: 0vw;} }
 
 /* screens 576px and smaller will display navbar links equally distributed */
 @media screen and (max-width: 576px) {
-    .Navbar a {
-        width: 25%;
-        font-size: 12px;
-    }
+    .Navbar a { width: 25%; font-size: 12px; }
 }
 
 /* hover effects */
-.Navbar a:hover {
-    background-color: #f9f871;
-    color: black;
-    font-weight: bold;
-}
+.Navbar a:hover { background-color: var(--sun); color: black; font-weight: bold; }
 
 /* home button */
-.Navbar a.active {
-    background-color: #940074;
-}
+.Navbar a.active { background-color: var(--magenta); }
 
 /** VIDEO **/
 /*formatting for background video*/
@@ -204,9 +168,7 @@ footer {
 
 /* screens that are 576px and smaller will not display the background video */
 @media screen and (max-width: 576px) {
-    #Coding_Video {
-        display: none;
-    }
+    #Coding_Video { display: none; }
 }
 
 /* text over the video (expanded to cover full page initially, no button) */
@@ -214,36 +176,60 @@ footer {
     background: rgba(0, 0, 0, 0.5);
     color: white;
     width: 100%;
-    height: 100vh; /* Fill the viewport height like reference */
+    height: 100vh;
     padding: 25px;
     position: relative;
     -webkit-animation: moveVideoText 3s;
     animation: moveVideoText 3s;
+    isolation: isolate;
 }
+/* subtle scanlines + vignette for intentional retro feel */
+.Video_Text::before{
+  content:"";
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.05) 0px,
+    rgba(255,255,255,.05) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  pointer-events:none;
+}
+.Video_Text::after{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,.5) 100%);
+  pointer-events:none;
+}
+
+/* mascot (expects images/sprites/robo_walk.png with 12 frames, 48x48 each) */
+.mascot{
+  position:absolute; left: 2rem; bottom: 2rem;
+  width:48px; height:48px;
+  background: url('../images/sprites/robo_walk.png') 0 0 no-repeat;
+  image-rendering: pixelated;
+  animation: mascotWalk 1s steps(12) infinite, mascotDrift 16s linear infinite alternate;
+  opacity:.9;
+}
+@keyframes mascotWalk { from{ background-position:0 0; } to{ background-position:-576px 0; } }
+@keyframes mascotDrift { from{ transform: translateX(0); } to{ transform: translateX(40vw);} }
 
 /* This animation effect causes the overlay video text to move up from the bottom of the page upon page load */
-@keyframes moveVideoText {
-    from {top: -100vh;} /* Adjusted to match full height movement */
-    to {top: 0vh;}
-}
+@keyframes moveVideoText { from {top: -100vh;} to {top: 0vh;} }
 /***** END OF VIDEO STYLING *****/
 
-/***** TABLE STYLING -  this section covers the styling of the columns and rows within the table *****/
-* { /* The asterisk is a universal selector that applies this effect to all elements on the page */
-    box-sizing: border-box; /* This creates a box with a border within which we will place most of our text */
-}
+/***** TABLE STYLING *****/
+* { box-sizing: border-box; }
 
 /*about styling*/
 #About {
-    opacity: 0; /* Initially hidden */
-    transform: translateY(50px); /* Moves down initially */
+    opacity: 0;
+    transform: translateY(50px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
-#About.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
+#About.fade-in { opacity: 1; transform: translateY(0); }
 
 .Column_1 {
     float: left;
@@ -251,14 +237,12 @@ footer {
     padding: 10px;
     padding-top: 3%;
     height: 400px;
-    background-color: #f2f2f2;
+    background-color: var(--paper);
 }
 
 /* Screens 576px and smaller will display a scroll bar if the text overflows the column height */
 @media screen and (max-width: 576px) {
-    .Column_1 {
-        overflow: auto;
-    }
+    .Column_1 { overflow: auto; }
 }
 
 .Column_2 {
@@ -267,25 +251,16 @@ footer {
     padding: 10px;
     padding-top: 1.9%;
     height: 400px;
-    background-color: #ffb343;
+    background-color: var(--amber);
 }
 
-/* This class is applied to the columns in the final row, overriding the height and padding to provide more room for the contact form while keeping the rest of the formatting from Column_1 or Column_2 */
-.Column_tall {
-    padding-top: 3.5%;
-    height: 450px;
-}
+/* Taller contact row override (used elsewhere if needed) */
+.Column_tall { padding-top: 3.5%; height: 450px; }
 
-/* This inserts something after the content of selected elements (in this case the elements with class "Row") */
-.Row:after {
-    content: ""; /* By leaving this blank, we are allowing the footer (covered lower down) to be displayed - removing it makes the footer overwrite a column */
-    display: table; /* The display property specifies the type of display behavior; the table value tells the browser to treat the element as a table */
-    clear: both; /* This clears any other elements from floating on the left or the right of an element */
-}
+.Row:after { content: ""; display: table; clear: both; }
 /***** END OF TABLE STYLING *****/
 
 /***** CONTACT FORM STYLING *****/
-/* input[type=text] targets all text input sections of the contact form */
 input[type=text], input[type=tel] {
     width: 100%;
     padding: 12px;
@@ -297,56 +272,43 @@ input[type=text], input[type=tel] {
     resize: vertical;
     font-family: Perpetua, Rockwell Extra Bold;
 }
+input[type=text]:hover, input[type=tel]:hover { box-shadow: 0 0 5px #00004d inset; }
 
-/* Hover effects for input boxes */
-input[type=text]:hover, input[type=tel]:hover {
-    box-shadow: 0 0 5px #00004d inset;
-}
-
-/* Submit button */
 input[type=submit] {
-    background-color: black; /* Sets the background color of the submit button to black */
-    color: white; /* Sets the font color of the Submit button to white */
-    font-weight: bold; /* Makes the font of the submit button bold */
-    padding: 12px 20px; /* Adds padding to the submit button */
-    border: none; /* Removes the border from the submit button */
-    border-radius: 4px; /* Gives the submit button the same rounded corners as the text boxes */
-    cursor: pointer; /* Changes the cursor to pointer when over the submit button */
-    display: block; /* Allows the submit button to be centered */
-    margin-left: auto; /* In combination with "margin-right: auto" this will center the submit button */
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
     margin-right: auto;
     font-family: Perpetua, Rockwell Extra Bold;
 }
-
-/* Hover effect for submit button */
 input[type=submit]:hover {
-    background-color: white; /* Turns the background of the submit button white when the user hovers over it */
-    color: black; /* Turns the font black when hovered over */
-    transform: scale(1.5); /* Makes the button increase 1.5 times in size */
-    transition: transform 1.5s; /* Makes the transform effect last 1.5 seconds */
+    background-color: white;
+    color: black;
+    transform: scale(1.5);
+    transition: transform 1.5s;
 }
-
-/* Form element */
 form {
-    border-radius: 5px; /* Rounds the corners of the contact form */
+    border-radius: 5px;
     background-color: #f2f2f2;
-    padding: 10px; /* Adds padding to the contact form */
+    padding: 10px;
     font-family: "Trebuchet MS", Optima;
 }
-/***** END OF CONTACT FORM STYLING *****/
 
 /*Popup styling*/
 .popup {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
-
 .popup-content {
     background-color: #f2f2f2;
     margin: 10% auto;
@@ -357,20 +319,14 @@ form {
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 10px; right: 15px;
     font-size: 25px;
     color: #000080;
     cursor: pointer;
 }
-
-.close-btn:hover {
-    color: #d7005c;
-}
-
+.close-btn:hover { color: #d7005c; }
 .popup-content h2 {
     margin-top: 0;
     color: #000080;
@@ -378,40 +334,174 @@ form {
     text-align: center;
 }
 
-/* Contact button (permanently fixed like reference’s CONTACT) */
+/* Contact button */
 .contact-btn {
-    background-color: #000080; 
-    color: #f9f871; 
-    padding: 1vw; 
-    border: none; 
-    border-radius: 4px; 
-    font-family: "Syne", serif; 
-    font-size: 1.5vw; 
+    background-color: var(--ink);
+    color: var(--sun);
+    padding: 1vw;
+    border: none;
+    border-radius: 4px;
+    font-family: "Syne", serif;
+    font-size: 1.5vw;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    animation: bounce 1.5s ease-in-out infinite; 
+    animation: bounce 1.5s ease-in-out infinite;
     position: fixed;
-    bottom: 1.75vw; 
-    right: 1.75vw; 
+    bottom: 1.75vw; right: 1.75vw;
     z-index: 100;
-    -webkit-animation: movePopup 5s; 
-    animation: movePopup 5s; 
+    -webkit-animation: movePopup 5s;
+    animation: movePopup 5s;
+}
+@keyframes movePopup { from { right: -40vw; } to { right: 1.75vw; } }
+@-webkit-keyframes movePopup { from { right: -40vw; } to { right: 1.75vw; } }
+.contact-btn:hover { background-color: #940074; color: black; transform: scale(1.05); }
+
+/*  section-specific image sizing fixes  */
+#About .Column_2 img { max-width: 80%; height: auto; margin-bottom: 15px; }
+
+/*  Projects   */
+#Projects {
+    display: block;
+    overflow: hidden;
+    background-color: var(--crt);
+    color: var(--paper);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2em 0;
+    clear: both;
+}
+#Projects:after { content: ""; display: table; clear: both; }
+#Projects .Column_1, #Projects .Column_2 {
+    height: 100%;
+    background-color: var(--crt);
+    color: var(--paper);
+    padding-top: 3%;
+}
+#Projects h1{
+    text-transform: uppercase;
+    font-family: "VT323", monospace;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 3%;
+    color: var(--phosphor);
+    transition: transform .5s ease-in-out;
+    transform: scale(1);
+}
+#Projects p { color: var(--paper); }
+#Projects img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: none; /* override global grayscale */
 }
 
-/* Animation for contact button sliding in */
-@keyframes movePopup {
-    from { right: -40vw; }
-    to { right: 1.75vw; }
+/*  new grid cards for projects  */
+.ProjectsGrid{
+  background: var(--crt);
+  padding: 2.5rem 1rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  border-top: 1px solid #2a2a2a;
+}
+.ProjectCard{
+  background: #131313;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.ProjectCard:hover{ transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.ProjectCard h3{ font-family:"VT323", monospace; color: var(--phosphor); font-size: 32px; margin: .5rem 0 .25rem; text-align:left; }
+.ProjectCard p{ color:#ddd; text-align:left; padding:0; font-size:16px; }
+.ProjectCard .stack{ color:#aaa; font-family:"Syne", sans-serif; margin-bottom:.5rem; }
+.ProjectCard img{ width:100%; height:auto; filter:none; border-radius:6px; }
+.ProjectCard .links a{ color: var(--magenta); margin-right: 14px; text-decoration:none; font-weight:700; }
+.ProjectCard .links a:hover{ text-decoration:underline; }
+
+/* DevLog */
+#DevLog { background-color: var(--paper); }
+#DevLog p { color: #000; }
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+  #Coding_Video{ animation: none !important; }
 }
 
-@-webkit-keyframes movePopup {
-    from { right: -40vw; }
-    to { right: 1.75vw; }
+/*  fix: readable text on light columns + no overflow  */
+.Column_1,
+.Column_2 {
+  color: var(--ink);           /* dark text on light/amber boxes */
+  height: auto !important;     /* let boxes grow with content */
+  min-height: 400px;           /* keep your original visual height */
 }
 
-/* Hover effect (match reference’s button hover) */
-.contact-btn:hover {
-    background-color: #940074;
-    color: black; 
-    transform: scale(1.05);
+/* making sure links still pop in those light sections */
+.Column_1 a,
+.Column_2 a { color: var(--magenta); }
+
+/* readable headings */
+.Column_1 h1,
+.Column_2 h1 { color: #000080; }
+
+
+/*  equal-height rows  */
+.Row{
+  display: flex;
+  align-items: stretch;      /* make columns match tallest sibling */
+}
+
+.Column_1,
+.Column_2{
+  float: none;               /* disable float layout */
+  width: 50%;
+  height: auto !important;   /* grow with content */
+  min-height: 400px;         /* keep your visual baseline height */
+  color: var(--ink);         /* readable text on light backgrounds */
+  display: flex;             /* ensure background fills full column */
+  flex-direction: column;
+}
+
+.Column_1 a, .Column_2 a{ color: var(--magenta); }
+
+.Column_1 h1, .Column_2 h1{ color: #000080; }
+
+@media (max-width: 900px){
+  .Row{ flex-direction: column; }
+  .Column_1, .Column_2{ width: 100%; min-height: unset; }
+}
+
+
+/*  fix for nuclear control */
+#Projects{
+  display: flex !important;     /* override the old display:block */
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+
+#Projects .Column_1,
+#Projects .Column_2{
+  width: 50%;
+  height: auto !important;       /* override height:100% */
+  background-color: var(--crt);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#Projects img{
+  filter: none;
+  max-width: 95%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Stack on small screens */
+@media (max-width: 900px){
+  #Projects{ flex-direction: column; }
+  #Projects .Column_1, #Projects .Column_2{ width: 100%; }
 }

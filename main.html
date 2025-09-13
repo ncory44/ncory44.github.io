@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<!--Head-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Nathan Cory</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="JS/javascript.js" defer></script>
+</head>
+
+<!--Body-->
+<body class="Background">
+    
+    <!--Navbar-->
+    <div class="Navbar">
+        <a class="active" href="#Home">Home</a>
+        <a href="#About">About</a>
+        <a href="#GitHub">GitHub</a>
+        <a href="#Projects">Current Project</a>
+        <!-- Keep inline call; JS now exposes openForm globally -->
+        <a href="#Home" onclick="openForm()">Contact</a>
+    </div>
+
+    <!--Breaks inserted to add space between navbar and the first heading-->
+    <br>
+    <br>
+
+    <!--Background video-->
+    <div id="Home">
+        <video autoplay muted loop id="Coding_Video">
+            <source src="images/videos/coding.mp4" type="video/mp4">
+            <!--Display message if video fails to run-->
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <!--Video text (expanded to cover full page initially, no button)-->
+    <div class="Video_Text">
+        <h1 style="font-size:6vw;" class="yellow-text">Nathan's Portfolio</h1>
+        <strong>
+            <p class="center term">
+                <q>Hello, World</q><span class="blink">█</span>
+                <br>
+                <br> My name is Nathan. Welcome to my portfolio website. On it, I will tell you about my background and experience.
+                <br>
+                <br> Thank you for stopping by and enjoy!
+            </p>
+        </strong>
+
+        <!-- Optional tiny mascot (uses a spritesheet you export) -->
+        <div class="mascot" aria-hidden="true" title=""></div>
+    </div>
+
+    <!--About section-->
+    <div class="Row" id="About">
+        <!--Left column-->
+        <div class="Column_2">
+            <img src="images/computing2.jpg" width="420" alt="computer office" loading="lazy">
+        </div>
+        <!--Right column-->
+        <div class="Column_1">
+            <h1>About</h1>
+            <hr>
+            <p>
+                I am a software developer who loves to code! I fell in love with coding playing games, and wanting to get to know what was going on behind the scenes.
+                <br>
+                <br>I am a graduate of <a href="https://www.learncodinganywhere.com" target="_blank" rel="noopener noreferrer">The Tech Academy</a>’s Software Developer Boot Camp, and trained and experienced in the following web and programming languages: HTML, CSS, JavaScript, SQL, C#, C++, and Unity. My experience with C++ and Unity has allowed me to build performant, interactive applications, including game development projects like Nuclear Control, where I leveraged Unity’s engine and C++ for optimized systems and gameplay mechanics.
+                <br>
+                <br>I am a full-stack developer and would love to work with you on your project. <a href="#Home" onclick="openForm()">Contact</a> me below!
+            </p>
+        </div>
+    </div>
+
+    <!--GitHub section-->
+    <div class="Row" id="GitHub">
+        <!--Left column-->
+        <div class="Column_1">
+            <h1>GitHub</h1>
+            <p>
+                You can view my coding projects on my GitHub profile here:
+                <br>
+            <p class="center"><a href="https://github.com/ncory44" target="_blank" rel="noopener noreferrer">Nathan's Github</a></p>
+            </p>
+        </div>
+        <!--Right column-->
+        <div class="Column_2">
+            <a href="https://github.com/ncory44" target="_blank" rel="noopener noreferrer">
+                <img src="images/githublogo.png" alt="GitHub Logo" loading="lazy">
+            </a>
+        </div>
+    </div>
+
+    <!-- Projects section -->
+    <div class="Row" id="Projects">
+        <!-- IMAGE ON LEFT -->
+        <div class="Column_2">
+            <img src="images/mainRoomSprite.png" alt="Nuclear Reactor Game Concept" loading="lazy" class="pixel">
+        </div>
+        <!-- TEXT ON RIGHT -->
+        <div class="Column_1">
+            <h1>Nuclear Control</h1>
+            <p>
+                A systems-driven simulation inspired by real-world nuclear operations.
+                <br><br>
+                Monitor reactor status, reroute energy, and survive failure scenarios as a lone technician left behind.
+                <br><br><em>Systems Used:</em> C#, Unity, Aseprite
+            </p>
+        </div>
+    </div>
+
+    <!-- Projects Grid (Karateka + Unreal) -->
+    <section class="ProjectsGrid">
+      <!-- Karateka Remaster -->
+      <article class="ProjectCard">
+        <img class="pixel" src="images/KaratekaGif.gif" alt="Karateka prototype" loading="lazy">
+        <h3>Karateka (Remaster Study)</h3>
+        <p class="stack"><em>Tech:</em> C#, Unity Timeline/Anim, Aseprite</p>
+        <p>Recreating classic timing, rotoscoped feel, and hit-stop. Built a state machine with buffered inputs and frame-accurate windows.</p>
+        <div class="links">
+          <a href="https://github.com/ncory44" target="_blank" rel="noopener noreferrer">Repo</a>
+        </div>
+      </article>
+
+      <!-- Unreal Offroad / Race Systems -->
+      <article class="ProjectCard">
+        <img class="pixel" src="images/UnrealRaceScreenshot.png" alt="Unreal offroad system" loading="lazy">
+        <h3>Unreal Systems: Offroad/Race</h3>
+        <p class="stack"><em>Tech:</em> UE 5.6 Blueprints, Chaos, AI Nav</p>
+        <p>Checkpoint system, lap timer, collectible logic, and AI cars that can “steal” pickups. Includes GameMode win/lose with HUD.</p>
+        <div class="links">
+          <a href="https://github.com/ncory44" target="_blank" rel="noopener noreferrer">Notes</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Dev Log section -->
+    <div class="Row" id="DevLog">
+        <div class="Column_2">
+            <h1>Dev Log</h1>
+            <p>
+                • Added a functioning UI readout for reactor core temperature<br>
+                • Implemented power routing minigame using Unity UI<br>
+                • Researching real meltdown scenarios for better accuracy
+            </p>
+        </div>
+        <div class="Column_1">
+            <img src="images/mutusconcept.png" alt="Console UI Sketch" loading="lazy" class="pixel">
+        </div>
+    </div>
+
+    <!--Popup Form-->
+    <div id="contactPopup" class="popup">
+        <div class="popup-content">
+            <span id="closePopupBtn" class="close-btn">×</span>
+            <h2>Contact Me</h2>
+            <form action="" method="POST" id="contactForm">
+                <label>Name:</label>
+                    <input type="text" id="Name" name="Name" placeholder="Please enter your name here">
+                <label>Email:</label>
+                    <input type="text" id="Email" name="Email" placeholder="Please enter your email here">
+                <label>Phone:</label>
+                    <input type="tel" id="Phone" name="Phone" placeholder="Please enter your phone number here">
+                <label>Message:</label>
+                    <input type="text" id="Message" name="Message" placeholder="Please write your message here">
+                    <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+
+    <!--Fixed Contact Button-->
+    <button id="openPopupBtn" class="contact-btn">Contact Me</button>
+
+    <!--Footer section-->
+    <footer>
+        <p class="center">@nateforgets</p>
+    </footer>
+</body>
+</html>
