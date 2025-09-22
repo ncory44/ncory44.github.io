@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Hero with painting background */
+#MusicHero{
+  position:relative;
+  min-height: 55vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f5efe6;
+  isolation:isolate;
+}
+#MusicHero::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(140deg, rgba(13,15,26,.9), rgba(122,46,42,.6));
+  mix-blend-mode: multiply;
+  opacity: 1;
+}
+#MusicHero .wrap{
+  position:relative; z-index:1; text-align:center;
+  max-width: 900px; padding: 1.5rem 1rem 1rem;
+}
+#MusicHero h1{
+  font-family:"EB Garamond", serif; font-size: clamp(36px, 6vw, 64px);
+  letter-spacing:.04em; margin:0 0 .25rem;
+  color: #e7e0cf;
+}
+#MusicHero .wrap > img{
+  display:block;
+  margin: 0 auto 1rem;  
+  border-radius:12px;   
+}
+#MusicHero .wrap p{
+  margin-top: .5rem;     
+}
+#MusicHero p{
+  font-family:"EB Garamond", serif; font-size: clamp(16px, 2.2vw, 20px);
+  color:#eee; text-align:center; margin:0;
+}
+
+/* Main music area */
+#Music{
+  position: relative;
+  background: url('../images/musicBackground.jpg') center/cover fixed no-repeat; /* can swap to another painting */
+  padding: 2.5rem 1rem 3rem;
+  color: #f0ead6;
+}
+#Music::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(13,15,26,.78), rgba(13,15,26,.88));
+}
+#Music .Music__inner{
+  position:relative; z-index:1;
+  display:grid; gap:1.5rem; grid-template-columns: 1fr 1fr;
+  max-width: 1100px; margin:0 auto;
+}
+#Music .Music__intro{ display:flex; flex-direction:column; gap:1rem; }
+.VideoEmbed{ aspect-ratio:16/9; width:100%; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+.VideoEmbed iframe{ width:100%; height:100%; display:block; }
+
+.Music__grid{
+  display:grid; gap:1rem;
+  grid-auto-rows: 1fr;
+}
+.Cue{
+  background: rgba(10,10,10,.5);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: .75rem;
+  backdrop-filter: blur(1.5px);
+}
+.Cue__art{ width:100%; height:180px; object-fit:cover; border-radius:8px; filter: saturate(.9) contrast(.95); }
+.Cue figcaption{ margin:.5rem 0 .25rem; font-family:"EB Garamond", serif; }
+.Cue .tags{ display:block; font-family:"Syne", sans-serif; font-size:.9rem; opacity:.8; }
+.Cue audio{ width:100%; accent-color:#c0a769; }
+
+.Music__notice{
+  position:relative; z-index:1;
+  max-width:1100px; margin: 1rem auto 0; text-align:center;
+  font-family:"EB Garamond", serif; color:#e7e0cf;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  #Music .Music__inner{ grid-template-columns: 1fr; }
+}
+
+
+/* fixes for music navbar */
+.theme-music .Navbar{
+  background: rgba(13,15,26,.60);           /* translucent, moody */
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(192,167,105,.25); /* subtle gold line */
+  text-align: center;
+}
+
+/* Links: EB Garamond + parchment */
+.theme-music .Navbar a{
+  font-family: "EB Garamond", serif;
+  letter-spacing: .04em;
+  font-size: 24px;
+  color: #e7e0cf;
+  background: transparent !important;       /* kill yellow block */
+}
+
+.theme-music .Navbar a::after{
+  content:"";
+  display:block;
+  height:2px;
+  width:0;
+  background:#c0a769;                        /* muted gold */
+  transition: width .25s ease;
+  margin-top:4px;
+}
+
+.theme-music .Navbar a:hover{
+  color:#ffffff;
+  background: transparent !important;
+}
+.theme-music .Navbar a:hover::after,
+.theme-music .Navbar a.active::after{
+  width:100%;
+}
+
+/* link color */
+.theme-music .Navbar a.active{
+  color:#c0a769;
+  background: transparent !important;
+}
+
+/* smaller screens */
+@media (max-width: 576px){
+  .theme-music .Navbar a{ font-size:16px; }
+}
+
+/* contact me button */
+.theme-music .contact-btn{
+  background:#1a1a1a;
+  color:#e7e0cf;
+  border:1px solid rgba(192,167,105,.35);
+}
+.theme-music .contact-btn:hover{
+  background:#2a2a2a;
+  color:#fff;
+}
+
+/* music page footer */
+.theme-music footer{
+  background: rgba(13,15,26,.85);
+  border-top: 1px solid rgba(192,167,105,.35); /* muted gold line */
+  color: #e7e0cf;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.theme-music footer .footer-copy{
+  margin: 0;
+  font-family: "EB Garamond", serif;
+  letter-spacing: .02em;
+  font-size: 18px;
+}
+
+.theme-music footer a{
+  color: #c0a769;                /* gold accent */
+  text-decoration: underline;
+}
+.theme-music footer a:hover{
+  color: #ffffff;
+}
+
+/* keep contact button from overlapping */
+.theme-music .contact-btn{ bottom: 2.25rem; }

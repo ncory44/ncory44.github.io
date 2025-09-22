@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Nathan Cory — Music</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/music.css">
+    <link rel="icon" href="images/favicon.png" type="image/svg+xml">
+    <link rel="alternate icon" href="images/favicon.png" sizes="32x32">
+    <link rel="alternate icon" href="images/favicon.png" sizes="16x16">
+    <script src="JS/javascript.js" defer></script>
+</head>
+<body class="theme-music">
+
+
+  <div class="Navbar">
+    <a href="index.html#Home">Home</a>
+    <a href="index.html#About">About</a>
+    <a href="index.html#GitHub">GitHub</a>
+    <a href="index.html#Projects">Current Project</a>
+    <a class="active" href="music.html">Music</a>
+    <a href="#Music" onclick="openForm()">Contact</a>
+  </div>
+
+  <br><br>
+
+
+  <header id="MusicHero">
+    <div class="wrap">
+      <h1>Nathan's Music Archive</h1>
+      <p>
+        <div class="Cameo"><img src="images/Selfportrait painting.png" alt="Composer portrait"></div>
+        Film-score leaning cues and themes. Short samples below; film clips on request.<br>
+         For licensing/commissions, <a href="#Music" onclick="openForm()">contact me</a>.
+      </p>
+    </div>
+  </header>
+
+  <!-- Music content -->
+  <main id="Music">
+    <div class="Music__inner">
+      <section class="Music__intro">
+        <div class="VideoEmbed">
+          <!-- Replace VIDEO_ID or remove this block -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
+                  title="Film cue" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section class="Music__grid">
+        <!-- Cue 1 -->
+        <figure class="Cue">
+          <img class="Cue__art" src="images/music/painting_01.jpg" alt="" loading="lazy">
+          <figcaption>
+            <strong>Oni Theme (sample, 0:45)</strong>
+            <span class="tags">dark • strings • taiko</span>
+          </figcaption>
+          <audio class="Protect" preload="none" controls controlsList="nodownload noplaybackrate">
+            <source src="audio/oni_theme_sample.mp3" type="audio/mpeg">
+            <source src="audio/oni_theme_sample.ogg" type="audio/ogg">
+          </audio>
+        </figure>
+
+        <!-- Cue 2 -->
+        <figure class="Cue">
+          <img class="Cue__art" src="images/music/painting_02.jpg" alt="" loading="lazy">
+          <figcaption>
+            <strong>Watcher at Dusk (sample, 1:00)</strong>
+            <span class="tags">ambient • piano • pads</span>
+          </figcaption>
+          <audio class="Protect" preload="none" controls controlsList="nodownload noplaybackrate">
+            <source src="audio/watcher_dusk_sample.mp3" type="audio/mpeg">
+            <source src="audio/watcher_dusk_sample.ogg" type="audio/ogg">
+          </audio>
+        </figure>
+
+        <!-- Cue 3 -->
+        <figure class="Cue">
+          <img class="Cue__art" src="images/music/painting_03.jpg" alt="" loading="lazy">
+          <figcaption>
+            <strong>Magdalene (film excerpt)</strong>
+            <span class="tags">baroque • intimate • strings</span>
+          </figcaption>
+          <audio class="Protect" preload="none" controls controlsList="nodownload noplaybackrate">
+            <source src="audio/magdalene_excerpt.mp3" type="audio/mpeg">
+            <source src="audio/magdalene_excerpt.ogg" type="audio/ogg">
+          </audio>
+        </figure>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Popup Contact (same markup as index) -->
+  <div id="contactPopup" class="popup">
+    <div class="popup-content">
+      <span id="closePopupBtn" class="close-btn">×</span>
+      <h2>Contact Me</h2>
+      <form action="" method="POST" id="contactForm">
+        <label>Name:</label><input type="text" id="Name" name="Name">
+        <label>Email:</label><input type="text" id="Email" name="Email">
+        <label>Phone:</label><input type="tel" id="Phone" name="Phone">
+        <label>Message:</label><input type="text" id="Message" name="Message">
+        <input type="submit" value="SUBMIT">
+      </form>
+    </div>
+  </div>
+
+  <button id="openPopupBtn" class="contact-btn">Contact Me</button>
+
+  <footer>
+  <p class="footer-copy">
+    © Nathan Cory. Previews for portfolio only. For licensing/commissions, please
+    <a href="#Music" onclick="openForm()">contact me</a>.
+  </p>
+</footer>
+
+</body>
+</html>
