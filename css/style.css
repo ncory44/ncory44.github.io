@@ -529,3 +529,22 @@ form {
   #DevLog .Column_1{ flex-direction: column; }
   #DevLog .Column_1 img{ width: 100%; }
 }
+
+
+/* smooth rendering for line art */
+#DevLog .art{
+  image-rendering: auto;              
+  height: auto;                      
+  filter: none;                       
+}
+
+
+#DevLog .Column_1{
+  display: flex; flex-direction: row; align-items: flex-start;
+  justify-content: center; gap: 1rem; flex-wrap: wrap;
+}
+#DevLog .Column_1 .art{ width: calc(50% - .5rem); border-radius: 10px; margin: 0; }
+@media (max-width: 900px){
+  #DevLog .Column_1{ flex-direction: column; }
+  #DevLog .Column_1 .art{ width: 100%; }
+}
