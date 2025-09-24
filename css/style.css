@@ -505,3 +505,27 @@ form {
   #Projects{ flex-direction: column; }
   #Projects .Column_1, #Projects .Column_2{ width: 100%; }
 }
+
+/* DevLog image fix (side by side) */
+#DevLog .Column_1{
+  display: flex;                
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;                   
+  flex-wrap: wrap;            
+}
+
+#DevLog .Column_1 img{
+  width: calc(50% - .5rem);     /* two-up layout */
+  height: auto;                 
+  margin: 0;                    
+  filter: none;                 
+  border-radius: 10px;
+}
+
+/* Stack on small screens */
+@media (max-width: 900px){
+  #DevLog .Column_1{ flex-direction: column; }
+  #DevLog .Column_1 img{ width: 100%; }
+}
