@@ -110,49 +110,72 @@ img:hover { filter: grayscale(5%); transition: transform .5s; transform: scale(1
 /* FOOTER */
 footer { padding: 2%; background-color: var(--amber); }
 
-/***** NAVBAR STYLING *****/
+/***** NAVBAR STYLING (with hide-on-scroll) *****/
 .Navbar {
-    overflow: hidden;
-    background-color: var(--ink);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    -webkit-animation: moveNav 1s;
-    animation: moveNav 1s;
+  overflow: hidden;
+  background-color: var(--ink);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  /* existing load-in animation */
+  -webkit-animation: moveNav 1s;
+  animation: moveNav 1s;
+
+  /* new: slide away / return */
+  transition: transform 240ms ease, background-color 200ms ease, box-shadow 200ms ease;
+  will-change: transform;
+  transform: translateY(0);
 }
 
-/* moveNav animation effect for moving the nav bar in from the left of the screen */
-@keyframes moveNav { from {left: -100vw;} to {left: 0vw;} }
+/* slide navbar up when scrolling down */
+.Navbar.nav-hidden {
+  transform: translateY(-100%);
+}
+
+/* add subtle shadow/solid bg after you’ve scrolled a bit */
+.Navbar.nav-scrolled {
+  background-color: rgba(13, 15, 26, 0.9);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* load-in from left (unchanged) */
+@keyframes moveNav { from { left: -100vw; } to { left: 0vw; } }
 
 /* NAVBAR LINKS */
 .Navbar a {
-    float: left;
-    display: block;
-    color: var(--sun);
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: "Economica", serif;
-    font-size: 30px;
-    text-align: center;
-    position: relative;
-    -webkit-animation: moveNavText 3s;
-    animation: moveNavText 3s;
+  float: left;
+  display: block;
+  color: var(--sun);
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Economica", serif;
+  font-size: 30px;
+  text-align: center;
+  position: relative;
+  -webkit-animation: moveNavText 3s;
+  animation: moveNavText 3s;
 }
 
-/* moveNavText animation effect */
-@keyframes moveNavText { from {top: -100vw;} to {top: 0vw;} }
+/* move-in for link text (unchanged) */
+@keyframes moveNavText { from { top: -100vw; } to { top: 0vw; } }
 
-/* screens 576px and smaller will display navbar links equally distributed */
+/* responsive links */
 @media screen and (max-width: 576px) {
-    .Navbar a { width: 25%; font-size: 12px; }
+  .Navbar a { width: 25%; font-size: 12px; }
 }
 
-/* hover effects */
-.Navbar a:hover { background-color: var(--sun); color: black; font-weight: bold; }
-
-/* home button */
+/* hover + active */
+.Navbar a:hover {
+  background-color: var(--sun);
+  color: black;
+  font-weight: bold;
+}
 .Navbar a.active { background-color: var(--magenta); }
+
+/* keep anchor targets from tucking under the fixed nav */
+html { scroll-padding-top: 70px; } /* adjust if your nav height changes */
 
 /** VIDEO **/
 /*formatting for background video*/

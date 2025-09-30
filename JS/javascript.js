@@ -50,4 +50,47 @@ document.addEventListener("DOMContentLoaded", function () {
             el.addEventListener('contextmenu', e => e.preventDefault());
         });
     }
+
+        // HIDE/SHOW NAV ON SCROLL
+    const nav = document.querySelector('.Navbar');
+    if (nav) {
+    let lastY = window.pageYOffset || document.documentElement.scrollTop;
+    let ticking = false;
+    const THRESHOLD = 8;   // pixels of movement before we react
+
+    function onScroll() {
+        const y = window.pageYOffset || document.documentElement.scrollTop;
+
+        // add shadow/solid background after a small scroll
+        if (y > 10) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
+
+        // ignore tiny jitter
+        if (Math.abs(y - lastY) > THRESHOLD) {
+        if (y > lastY && y > 80) {
+            // scrolling down
+            nav.classList.add('nav-hidden');
+        } else {
+            // scrolling up or near top
+            nav.classList.remove('nav-hidden');
+        }
+        lastY = y;
+        }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(onScroll);
+        }
+    }, { passive: true });
+
+    // Reveal nav when user tabs for accessibility
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') nav.classList.remove('nav-hidden');
+    });
+    }
+
 });
+
