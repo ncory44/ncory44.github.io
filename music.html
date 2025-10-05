@@ -42,12 +42,19 @@
     <div class="Music__inner">
       <section class="Music__intro">
         <div class="VideoEmbed">
-          <!-- Replace VIDEO_ID or remove this block -->
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
-                  title="Film cue" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
+          <video id="scenePack"
+                controls
+                preload="metadata"
+                playsinline
+                controlsList="nodownload noplaybackrate">
+            <source src="images/videos/NathanScoreComp.mp4" type="video/mp4">
+            <!--WebM fallback -->
+            <source src="images/videos/NathanScoreComp.mp4" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
         </div>
+        <p class="VideoCaption">Two scenes featuring my original score.</p>
+
       </section>
 
       <section class="Music__grid">

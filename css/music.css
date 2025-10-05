@@ -172,3 +172,20 @@
 
 /* keep contact button from overlapping */
 .theme-music .contact-btn{ bottom: 2.25rem; }
+
+/* Make <video> fill the same responsive frame as the old iframe */
+.VideoEmbed video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000; /* black bars before load */
+}
+
+/* Optional small caption under the video */
+.VideoCaption{
+  margin-top: .5rem;
+  text-align: center;
+  font-family: "EB Garamond", serif;
+  color: #e7e0cf;
+  opacity: .9;
+}
