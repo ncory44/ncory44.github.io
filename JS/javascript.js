@@ -79,59 +79,59 @@ document.addEventListener("DOMContentLoaded", function () {
         ticking = false;
     }
 
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(onScroll);
-        }
-    }, { passive: true });
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(onScroll);
+            }
+        }, { passive: true });
 
-    // Reveal nav when user tabs for accessibility
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') nav.classList.remove('nav-hidden');
-    });
-    }
+        // Reveal nav when user tabs for accessibility
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') nav.classList.remove('nav-hidden');
+        });
+        }
 
     /* ===== One-at-a-time media playback (audio + video) ===== */
-(function oneAtATime() {
-  // Listen in the capture phase so we catch play/pause on any media, even if added later.
-  document.addEventListener('play', (ev) => {
-    const current = ev.target;
-    if (!(current instanceof HTMLMediaElement)) return;
+        (function oneAtATime() {
+        // Listen in the capture phase so we catch play/pause on any media, even if added later.
+        document.addEventListener('play', (ev) => {
+            const current = ev.target;
+            if (!(current instanceof HTMLMediaElement)) return;
 
-    // Pause every other audio/video on the page
-    document.querySelectorAll('audio, video').forEach((m) => {
-      if (m !== current && !m.paused) {
-        m.pause();
-        // If you also want others to rewind when switching, uncomment:
-        // m.currentTime = 0;
-      }
-    });
+            // Pause every other audio/video on the page
+            document.querySelectorAll('audio, video').forEach((m) => {
+            if (m !== current && !m.paused) {
+                m.pause();
+                // If you also want others to rewind when switching, uncomment:
+                // m.currentTime = 0;
+            }
+            });
 
-    // Optional: highlight the playing cue card
-    document.querySelectorAll('.Cue').forEach(c => c.classList.remove('playing'));
-    current.closest('.Cue')?.classList.add('playing');
-  }, true);
+            // Optional: highlight the playing cue card
+            document.querySelectorAll('.Cue').forEach(c => c.classList.remove('playing'));
+            current.closest('.Cue')?.classList.add('playing');
+        }, true);
 
-  // Remove highlight when paused/ended
-  document.addEventListener('pause', (ev) => {
-    if (ev.target.closest('.Cue')) {
-      ev.target.closest('.Cue')?.classList.remove('playing');
-    }
-  }, true);
-  document.addEventListener('ended', (ev) => {
-    if (ev.target.closest('.Cue')) {
-      ev.target.closest('.Cue')?.classList.remove('playing');
-    }
-  }, true);
+        // Remove highlight when paused/ended
+        document.addEventListener('pause', (ev) => {
+            if (ev.target.closest('.Cue')) {
+            ev.target.closest('.Cue')?.classList.remove('playing');
+            }
+        }, true);
+        document.addEventListener('ended', (ev) => {
+            if (ev.target.closest('.Cue')) {
+            ev.target.closest('.Cue')?.classList.remove('playing');
+            }
+        }, true);
 
-  // Optional: if the tab/window is hidden, pause everything
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      document.querySelectorAll('audio, video').forEach(m => m.pause());
-    }
-  });
-})();
+        // Optional: if the tab/window is hidden, pause everything
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+            document.querySelectorAll('audio, video').forEach(m => m.pause());
+            }
+        });
+        })();
 
 
 });
