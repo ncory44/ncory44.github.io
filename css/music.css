@@ -343,3 +343,21 @@
   opacity: 1;
   transform: scale(1);
 }
+
+/* Balanced two-lane layout on large screens */
+body.theme-music #Music .Music__inner{
+  grid-template-columns: 1fr 1fr;                      /* equal halves */
+  gap: clamp(2.5rem, 6vw, 5rem);                       /* separation */
+  max-width: 1400px;                                   /* page container */
+  padding-inline: clamp(24px, 6vw, 96px);              /* outer gutters */
+  margin-inline: auto;
+  justify-items: center;                                /* center content in each lane */
+}
+
+/* Lane max widths (so they don't hug the gutter on XL screens) */
+body.theme-music #Music{
+  --lane-left: 960px;                                   /* video lane */
+  --lane-right: 840px;                                  /* cards lane */
+}
+body.theme-music #Music .stickyVideo{ width: min(100%, var(--lane-left)); justify-self: center; }
+body.theme-music #Music .Music__grid{ width: min(100%, var(--lane-right)); justify-self: center; }
