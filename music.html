@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Nathan Cory">
+    <meta name="copyright" content="© Nathan Cory">
+
     <title>Nathan Cory — Music</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/music.css">
@@ -31,8 +34,11 @@
       <h1>Nathan's Music Archive</h1>
       <p>
         <div class="Cameo"><img src="images/Selfportrait painting.png" alt="Composer portrait"></div>
-        Film-score leaning cues and themes. Short samples below; film clips on request.<br>
-         For licensing/commissions, <a href="#Music" onclick="openForm()">contact me</a>.
+          <p class="HeroLead">
+            Film-score leaning cues and themes. Short samples below; film clips on request.
+            For licensing/commissions, <a href="#Music" onclick="openForm()">contact me</a>.
+          </p>
+         <span class="CameoCredit">Self-Portrait by Nathan Cory.</span>
       </p>
     </div>
   </header>
@@ -40,7 +46,7 @@
   <!-- Music content -->
   <main id="Music">
     <div class="Music__inner">
-      <section class="Music__intro">
+      <section class="Music__intro stickyVideo">
         <div class="VideoEmbed">
           <video id="scenePack"
                 controls
@@ -53,47 +59,56 @@
             Your browser does not support the video tag.
           </video>
         </div>
-        <p class="VideoCaption">Two scenes featuring my original score.</p>
+        <p class="VideoCaption">
+          <strong>Scene Pack — <em>What to Do About Elton and Hugh / SPADE</em> (2024)</strong><br>
+          Dir. Sam Menell • Music by Nathan Cory — used with permission.
+        </p>
 
       </section>
 
       <section class="Music__grid">
         <!-- Cue 1 -->
         <figure class="Cue">
-          <img class="Cue__art" src="images/music/painting_01.jpg" alt="" loading="lazy">
+          <img class="Cue__art" src="images/departureThumbnail.jpg" alt="" loading="lazy">
           <figcaption>
-            <strong>Oni Theme (sample, 0:45)</strong>
-            <span class="tags">dark • strings • taiko</span>
+            <strong>Departure (sample, 1:00)</strong>
+            <span class="tags">soft • strings • piano</span>
+            <span class="art-credit">
+              Image: <em>Lumber Schooners at Evening on Penobscot Bay</em>, Fitz Henry Lane, c. 1863 — National Gallery of Art (Public Domain).
+            </span>
           </figcaption>
           <audio class="Protect" preload="none" controls controlsList="nodownload noplaybackrate">
-            <source src="audio/oni_theme_sample.mp3" type="audio/mpeg">
-            <source src="audio/oni_theme_sample.ogg" type="audio/ogg">
+            <source src="audio/departureSample.mp3" type="audio/mpeg">
           </audio>
         </figure>
 
         <!-- Cue 2 -->
         <figure class="Cue">
-          <img class="Cue__art" src="images/music/painting_02.jpg" alt="" loading="lazy">
+          <img class="Cue__art" src="images/roboPunch.png" alt="" loading="lazy">
           <figcaption>
-            <strong>Watcher at Dusk (sample, 1:00)</strong>
-            <span class="tags">ambient • piano • pads</span>
+            <strong>Robot Attack (sample, 0:35)</strong>
+            <span class="tags">dark • heavy beat • pads</span>
+            <span class="art-credit">
+              Temp AI image while I work on the art don't judge me.
+            </span>
           </figcaption>
           <audio class="Protect" preload="none" controls controlsList="nodownload noplaybackrate">
-            <source src="audio/watcher_dusk_sample.mp3" type="audio/mpeg">
-            <source src="audio/watcher_dusk_sample.ogg" type="audio/ogg">
+            <source src="audio/robotAttackSample.mp3" type="audio/mpeg">
           </audio>
         </figure>
 
         <!-- Cue 3 -->
         <figure class="Cue">
-          <img class="Cue__art" src="images/music/painting_03.jpg" alt="" loading="lazy">
+          <img class="Cue__art" src="images/discoveryThumbnail.png" alt="" loading="lazy">
           <figcaption>
-            <strong>Magdalene (film excerpt)</strong>
-            <span class="tags">baroque • intimate • strings</span>
+            <strong>The Discovery (sample, 0:45)</strong>
+            <span class="tags">mysterious • electronic • orchestral</span>
+            <span class="art-credit">
+              Image created using Photoshop
+            </span>
           </figcaption>
           <audio class="Protect" preload="none" controls controlsList="nodownload noplaybackrate">
-            <source src="audio/magdalene_excerpt.mp3" type="audio/mpeg">
-            <source src="audio/magdalene_excerpt.ogg" type="audio/ogg">
+            <source src="audio/theDiscoverySample.mp3" type="audio/mpeg">
           </audio>
         </figure>
       </section>
@@ -119,11 +134,13 @@
   <button id="openPopupBtn" class="contact-btn">Contact Me</button>
 
   <footer>
-  <p class="footer-copy">
-    © Nathan Cory. Previews for portfolio only. For licensing/commissions, please
-    <a href="#Music" onclick="openForm()">contact me</a>.
-  </p>
-</footer>
+    <p class="footer-copy">
+      © <span id="year"></span> Nathan Cory. Previews for portfolio only.
+      For licensing/commissions, please <a href="#Music" onclick="openForm()">contact me</a>.
+    </p>
+    <p class="SiteCredit">Site design & code by Nathan Cory</p>
+    <span class="CameoCredit"> Background Image: <em>The Stranded Ship</em>, Asher Brown Durand — National Gallery of Art (Public Domain)</span>
+  </footer>
 
 </body>
 </html>

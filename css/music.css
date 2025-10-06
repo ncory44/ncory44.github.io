@@ -1,48 +1,124 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
-/* Hero with painting background */
+/* ==========================================================================
+   Music Page — Vars 
+   ========================================================================== */
+:root{
+  --nav-offset: 70px;   /* fixed navbar height for sticky offset */
+  --art-aspect: 5 / 4;  /* artwork thumbnail aspect */
+}
+
+/* ==========================================================================
+   Navbar (music theme only)
+   ========================================================================== */
+.theme-music .Navbar{
+  background: rgba(13,15,26,.60);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(192,167,105,.25);
+  text-align: center;
+}
+.theme-music .Navbar a{
+  font-family: "EB Garamond", serif;
+  letter-spacing: .04em;
+  font-size: 24px;
+  color: #e7e0cf;
+  background: transparent !important;
+}
+.theme-music .Navbar a::after{
+  content:"";
+  display:block;
+  height:2px;
+  width:0;
+  background:#c0a769;
+  transition: width .25s ease;
+  margin-top:4px;
+}
+.theme-music .Navbar a:hover{ color:#fff; }
+.theme-music .Navbar a:hover::after,
+.theme-music .Navbar a.active::after{ width:100%; }
+.theme-music .Navbar a.active{ color:#c0a769; }
+@media (max-width: 576px){
+  .theme-music .Navbar a{ font-size:16px; }
+}
+
+/* ==========================================================================
+   Hero (painting background, cameo, lead, credit)
+   ========================================================================== */
 #MusicHero{
-  position:relative;
+  position: relative;
   min-height: 55vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#f5efe6;
-  isolation:isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5efe6;
+  isolation: isolate;
 }
 #MusicHero::before{
   content:"";
   position:absolute; inset:0;
   background: linear-gradient(140deg, rgba(13,15,26,.9), rgba(122,46,42,.6));
   mix-blend-mode: multiply;
-  opacity: 1;
 }
 #MusicHero .wrap{
-  position:relative; z-index:1; text-align:center;
-  max-width: 900px; padding: 1.5rem 1rem 1rem;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  padding: 1.5rem 1rem 1rem;
 }
 #MusicHero h1{
-  font-family:"EB Garamond", serif; font-size: clamp(36px, 6vw, 64px);
-  letter-spacing:.04em; margin:0 0 .25rem;
+  font-family:"EB Garamond", serif;
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing:.04em;
+  margin: 0 0 .25rem;
   color: #e7e0cf;
 }
-#MusicHero .wrap > img{
-  display:block;
-  margin: 0 auto 1rem;  
-  border-radius:12px;   
+#MusicHero .Cameo{
+  width: clamp(220px, 28vw, 360px);
+  margin: 0 auto;
 }
-#MusicHero .wrap p{
-  margin-top: .5rem;     
+#MusicHero .Cameo img{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
 }
-#MusicHero p{
-  font-family:"EB Garamond", serif; font-size: clamp(16px, 2.2vw, 20px);
-  color:#eee; text-align:center; margin:0;
+#MusicHero .CameoCredit{
+  display: block;
+  margin-top: .4rem;
+  text-align: center;
+  font-family: "EB Garamond", serif;
+  font-size: 12px;
+  color: #e7e0cf;
+  opacity: .85;
 }
+#MusicHero .HeroLead{
+  margin-top: 1.1rem;                       /* space under portrait */
+  font-family:"EB Garamond", serif;
+  font-size: clamp(16px, 2.1vw, 19px);
+  line-height: 1.45;
+  color:#e7e0cf;
+  text-align:center;
+}
+/* hero background credit */
+#MusicHero{ position: relative; }
+#MusicHero .HeroCredit{
+  position: absolute;
+  right: 12px; bottom: 10px;
+  font-family: "EB Garamond", serif;
+  font-size: 12px;
+  color: #e7e0cf;
+  opacity: .75;
+  text-decoration: none;
+}
+#MusicHero .HeroCredit:hover{ opacity:1; text-decoration: underline; }
 
-/* Main music area */
+/* ==========================================================================
+   Main area (painting bg), two-column grid, sticky video
+   ========================================================================== */
 #Music{
   position: relative;
-  background: url('../images/musicBackground.jpg') center/cover fixed no-repeat; /* can swap to another painting */
+  background: url('../images/musicBackground.jpg') center/cover fixed no-repeat;
   padding: 2.5rem 1rem 3rem;
   color: #f0ead6;
 }
@@ -52,140 +128,218 @@
   background: linear-gradient(180deg, rgba(13,15,26,.78), rgba(13,15,26,.88));
 }
 #Music .Music__inner{
-  position:relative; z-index:1;
-  display:grid; gap:1.5rem; grid-template-columns: 1fr 1fr;
-  max-width: 1100px; margin:0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2.25rem;                                       /* a bit more space */
+  grid-template-columns: minmax(420px, 1.16fr) 1fr;   /* subtle wider left */
+  max-width: 1240px;
+  margin: 0 auto;
+  align-items: start;
 }
-#Music .Music__intro{ display:flex; flex-direction:column; gap:1rem; }
-.VideoEmbed{ aspect-ratio:16/9; width:100%; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.35); }
-.VideoEmbed iframe{ width:100%; height:100%; display:block; }
 
+/* sticky video column (left) */
+#Music .stickyVideo{
+  position: sticky;
+  top: calc(var(--nav-offset) + 12px);
+  align-self: start;
+  z-index: 2;
+}
+#Music .stickyVideo .VideoEmbed,
+#Music .stickyVideo .VideoCaption{
+  max-width: 900px;            /* make the video/caption feel a bit larger */
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* disable sticky on mobile (stack) */
+@media (max-width: 900px){
+  #Music .Music__inner{ grid-template-columns: 1fr; }
+  #Music .stickyVideo{ position: static; }
+}
+
+/* ==========================================================================
+   Video embed + caption
+   ========================================================================== */
+.VideoEmbed{
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.VideoEmbed video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000; /* black before load */
+}
+.VideoCaption{
+  margin-top: .75rem;
+  line-height: 1.45;
+  font-family: "EB Garamond", serif;
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: #e7e0cf;
+  text-align: center;
+}
+.VideoCaption strong{ font-variant: small-caps; letter-spacing:.03em; }
+.VideoCaption em{ font-style: italic; }
+
+/* ==========================================================================
+   Track grid + cards
+   ========================================================================== */
 .Music__grid{
-  display:grid; gap:1rem;
-  grid-auto-rows: 1fr;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;         /* center cards in the right column */
 }
 .Cue{
+  width: 100%;
+  max-width: 720px;
   background: rgba(10,10,10,.5);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 12px;
   padding: .75rem;
   backdrop-filter: blur(1.5px);
 }
-.Cue__art{ width:100%; height:180px; object-fit:cover; border-radius:8px; filter: saturate(.9) contrast(.95); }
-.Cue figcaption{ margin:.5rem 0 .25rem; font-family:"EB Garamond", serif; }
-.Cue .tags{ display:block; font-family:"Syne", sans-serif; font-size:.9rem; opacity:.8; }
+.Cue__art{
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--art-aspect);  /* taller thumbs */
+  object-fit: cover;
+  border-radius: 10px;
+  filter: none;
+}
+.Cue figcaption{
+  margin: .5rem 0 .25rem;
+  font-family:"EB Garamond", serif;
+}
+.Cue .tags{
+  display:block;
+  font-family:"Syne", sans-serif;
+  font-size:.9rem;
+  opacity:.8;
+}
 .Cue audio{ width:100%; accent-color:#c0a769; }
 
-.Music__notice{
-  position:relative; z-index:1;
-  max-width:1100px; margin: 1rem auto 0; text-align:center;
-  font-family:"EB Garamond", serif; color:#e7e0cf;
-}
-
-/* Mobile */
-@media (max-width: 900px){
-  #Music .Music__inner{ grid-template-columns: 1fr; }
-}
-
-
-/* fixes for music navbar */
-.theme-music .Navbar{
-  background: rgba(13,15,26,.60);           /* translucent, moody */
-  backdrop-filter: blur(4px);
-  border-bottom: 1px solid rgba(192,167,105,.25); /* subtle gold line */
-  text-align: center;
-}
-
-/* Links: EB Garamond + parchment */
-.theme-music .Navbar a{
-  font-family: "EB Garamond", serif;
-  letter-spacing: .04em;
-  font-size: 24px;
-  color: #e7e0cf;
-  background: transparent !important;       /* kill yellow block */
-}
-
-.theme-music .Navbar a::after{
-  content:"";
+/* optional per-card artwork credit */
+.art-credit{
   display:block;
-  height:2px;
-  width:0;
-  background:#c0a769;                        /* muted gold */
-  transition: width .25s ease;
-  margin-top:4px;
+  margin-top:.25rem;
+  font-size:12px;
+  line-height:1.3;
+  color:#d9d1bf;
+  opacity:.8;
+  font-family:"EB Garamond", serif;
 }
+.theme-music .art-credit a{ color:#c0a769; text-decoration: underline; }
 
-.theme-music .Navbar a:hover{
-  color:#ffffff;
-  background: transparent !important;
-}
-.theme-music .Navbar a:hover::after,
-.theme-music .Navbar a.active::after{
-  width:100%;
-}
-
-/* link color */
-.theme-music .Navbar a.active{
+/* ==========================================================================
+   Links (content & hero)
+   ========================================================================== */
+.theme-music main a,
+.theme-music #MusicHero a{
   color:#c0a769;
-  background: transparent !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
-
-/* smaller screens */
-@media (max-width: 576px){
-  .theme-music .Navbar a{ font-size:16px; }
-}
-
-/* contact me button */
-.theme-music .contact-btn{
-  background:#1a1a1a;
-  color:#e7e0cf;
-  border:1px solid rgba(192,167,105,.35);
-}
-.theme-music .contact-btn:hover{
-  background:#2a2a2a;
+.theme-music main a:hover,
+.theme-music #MusicHero a:hover{
   color:#fff;
+  text-decoration-thickness: 2px;
+}
+.theme-music main a:visited,
+.theme-music #MusicHero a:visited{ color:#c0a769; }
+
+/* ==========================================================================
+   Remove global image hover “pop” on music page
+   ========================================================================== */
+.theme-music img,
+.theme-music img:hover{
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
 }
 
-/* music page footer */
+/* ==========================================================================
+   Footer (Music theme) + Contact button offset
+   ========================================================================== */
 .theme-music footer{
   background: rgba(13,15,26,.85);
-  border-top: 1px solid rgba(192,167,105,.35); /* muted gold line */
+  border-top: 1px solid rgba(192,167,105,.35);
   color: #e7e0cf;
   padding: 16px 12px;
   text-align: center;
 }
-
 .theme-music footer .footer-copy{
   margin: 0;
   font-family: "EB Garamond", serif;
-  letter-spacing: .02em;
+  letter-spacing:.02em;
   font-size: 18px;
 }
-
-.theme-music footer a{
-  color: #c0a769;                /* gold accent */
-  text-decoration: underline;
-}
-.theme-music footer a:hover{
-  color: #ffffff;
-}
-
-/* keep contact button from overlapping */
+.theme-music footer a{ color:#c0a769; }
+.theme-music footer a:hover{ color:#fff; }
 .theme-music .contact-btn{ bottom: 2.25rem; }
 
-/* Make <video> fill the same responsive frame as the old iframe */
-.VideoEmbed video{
-  width: 100%;
-  height: 100%;
-  display: block;
-  background: #000; /* black bars before load */
+
+/* ===== LANE CENTERING + EXTRA SEPARATION ===== */
+
+/* Equal lanes and a larger, responsive gap between them */
+#Music .Music__inner{
+  grid-template-columns: 1fr 1fr;                 /* equal halves */
+  gap: clamp(2.5rem, 6vw, 5rem);                  /* push them apart */
+  justify-items: center;                           /* center each item in its lane */
 }
 
-/* Optional small caption under the video */
-.VideoCaption{
-  margin-top: .5rem;
+/* Left lane (video + caption) centered and sized */
+#Music .stickyVideo{
+  justify-self: center;    
+  width: min(96%, 920px);
+}
+
+/* Make the media fill the lane’s width (not a fixed max) */
+#Music .stickyVideo .VideoEmbed,
+#Music .stickyVideo .VideoCaption{
+  max-width: 100%;
+  margin-inline: 0;
   text-align: center;
-  font-family: "EB Garamond", serif;
-  color: #e7e0cf;
-  opacity: .9;
+}
+
+/* Right lane (track grid) centered and sized */
+#Music .Music__grid{
+  justify-self: center;                            /* center inside right lane */
+  width: min(96%, 820px);                          /* control inner width */
+}
+
+/* Taller artwork thumbs (already set, kept here for clarity) */
+#Music .Cue__art{
+  height: auto;
+  aspect-ratio: 4 / 3;                             /* 5/4 or 1/1 if you want taller */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Smooth golden highlight for active media (audio + video) */
+.Cue,
+.VideoEmbed{
+  position: relative; /* anchor the glow pseudo-element */
+}
+
+.Cue::after,
+.VideoEmbed::after{
+  content: "";
+  position: absolute;
+  inset: -4px;                         /* a little outside the card */
+  border-radius: 14px;                 /* match your 12px corners + offset */
+  border: 2px solid #c0a769;           /* gold */
+  box-shadow: 0 0 18px rgba(192,167,105,.35);
+  opacity: 0;
+  transform: scale(.995);
+  transition: opacity 180ms ease, transform 200ms ease;
+  pointer-events: none;                /* purely decorative */
+}
+
+.playing::after{
+  opacity: 1;
+  transform: scale(1);
 }

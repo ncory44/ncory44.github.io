@@ -117,7 +117,7 @@ footer { padding: 2%; background-color: var(--amber); }
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 
   /* existing load-in animation */
   -webkit-animation: moveNav 1s;
@@ -571,3 +571,4 @@ form {
   #DevLog .Column_1{ flex-direction: column; }
   #DevLog .Column_1 .art{ width: 100%; }
 }
+
