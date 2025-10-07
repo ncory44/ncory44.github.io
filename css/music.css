@@ -478,3 +478,36 @@ body.theme-music #Music .Music__grid{ width: min(100%, var(--lane-right)); justi
 .theme-music textarea::placeholder{
   color: #8f8777;
 }
+
+/* Music theme: contact inputs (make email match) */
+.theme-music input[type=text],
+.theme-music input[type=email],
+.theme-music input[type=tel],
+.theme-music textarea{
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(192,167,105,.25);
+  background: #121317;
+  color: #e7e0cf;
+  font-family: "Syne", sans-serif;
+  margin: 6px 0 16px 0;
+  appearance: none;          /* normalize across browsers */
+  -webkit-appearance: none;
+}
+
+.theme-music input[type=text]::placeholder,
+.theme-music input[type=email]::placeholder,
+.theme-music input[type=tel]::placeholder,
+.theme-music textarea::placeholder{
+  color: #8f8777;
+}
+
+.theme-music input[type=text]:focus,
+.theme-music input[type=email]:focus,
+.theme-music input[type=tel]:focus,
+.theme-music textarea:focus{
+  outline: none;
+  border-color: #c0a769;
+  box-shadow: 0 0 0 3px rgba(192,167,105,.25);
+}
