@@ -361,3 +361,120 @@ body.theme-music #Music{
 }
 body.theme-music #Music .stickyVideo{ width: min(100%, var(--lane-left)); justify-self: center; }
 body.theme-music #Music .Music__grid{ width: min(100%, var(--lane-right)); justify-self: center; }
+
+/* === Music theme: floating contact button === */
+.theme-music .contact-btn{
+  position: fixed;
+  right: 1.75rem;
+  bottom: 1.75rem;
+  z-index: 10000;                     /* above players */
+  padding: .85rem 1.15rem;
+  border-radius: 999px;
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
+  letter-spacing: .02em;
+
+  background: rgba(24,24,27,.72);
+  color: #e7e0cf;
+  border: 1px solid rgba(192,167,105,.35);  /* muted gold */
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+  animation: none;                            /* kill bounce on music page */
+  transition: transform .15s ease, background .15s ease, color .15s ease, box-shadow .2s ease;
+}
+.theme-music .contact-btn:hover{
+  background: rgba(34,34,40,.86);
+  color: #ffffff;
+  box-shadow: 0 14px 32px rgba(0,0,0,.45);
+  transform: translateY(-2px);
+}
+.theme-music .contact-btn:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(192,167,105,.35);
+}
+
+/* === Music theme: contact popup === */
+.theme-music .popup{
+  z-index: 10001;                              /* above everything */
+  background-color: rgba(10,10,14,.65);        /* darker overlay */
+  backdrop-filter: blur(2px);
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s ease;
+}
+.theme-music .popup.show{ opacity:1; visibility: visible; }
+
+.theme-music .popup-content{
+  background: rgba(22,22,26,.96);
+  border: 1px solid rgba(192,167,105,.28);
+  color: #e7e0cf;
+  max-width: 560px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+}
+.theme-music .popup-content h2{
+  margin-top: 0;
+  font-family: "EB Garamond", serif;
+  letter-spacing: .02em;
+  color: #e7e0cf;
+}
+.theme-music .close-btn{
+  color: #c0a769;
+}
+.theme-music .close-btn:hover{ color: #ffffff; }
+
+/* Inputs */
+.theme-music input[type=text],
+.theme-music input[type=tel],
+.theme-music textarea{
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(192,167,105,.25);
+  background: #121317;
+  color: #e7e0cf;
+  font-family: "Syne", sans-serif;
+  margin: 6px 0 16px 0;
+}
+.theme-music input[type=text]::placeholder,
+.theme-music input[type=tel]::placeholder,
+.theme-music textarea::placeholder{
+  color: #a8a090;
+}
+
+/* Submit */
+.theme-music input[type=submit]{
+  background: #c0a769;
+  color: #121212;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 22px;
+  border: none;
+  font-family: "EB Garamond", serif;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .15s ease;
+}
+.theme-music input[type=submit]:hover{
+  background: #d8bf82;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);
+}
+
+/* Music page: contact modal typography tweaks */
+.theme-music .popup-content h2{
+  color: #c0a769;     
+}
+
+/* Make the field labels readable */
+.theme-music .popup-content label{
+  display: block;
+  color: #111;                    
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  letter-spacing: .02em;
+  margin: .25rem 0 .35rem;
+}
+
+/* (Optional) nudge placeholder contrast a touch */
+.theme-music input::placeholder,
+.theme-music textarea::placeholder{
+  color: #8f8777;
+}

@@ -166,16 +166,23 @@
         <div class="popup-content">
             <span id="closePopupBtn" class="close-btn">×</span>
             <h2>Contact Me</h2>
-            <form action="" method="POST" id="contactForm">
+            <form id="contactForm" action="https://formspree.io/f/xzzdeaez" method="POST">
                 <label>Name:</label>
-                    <input type="text" id="Name" name="Name" placeholder="Please enter your name here">
+                <input type="text" id="Name" name="name" required>
+
                 <label>Email:</label>
-                    <input type="text" id="Email" name="Email" placeholder="Please enter your email here">
+                <input type="email" id="Email" name="email" required>
+
                 <label>Phone:</label>
-                    <input type="tel" id="Phone" name="Phone" placeholder="Please enter your phone number here">
+                <input type="tel" id="Phone" name="phone" pattern="[\d\s()+-]{7,}">
+
                 <label>Message:</label>
-                    <input type="text" id="Message" name="Message" placeholder="Please write your message here">
-                    <input type="submit" value="SUBMIT">
+                <textarea id="Message" name="message" rows="4" required></textarea>
+
+                <!-- spam honeypot -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_subject" value="Portfolio contact from your site">
+                <input type="submit" value="SUBMIT">
             </form>
         </div>
     </div>

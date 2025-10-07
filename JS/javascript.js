@@ -134,5 +134,104 @@ document.addEventListener("DOMContentLoaded", function () {
         })();
 
 
+        /* ===== Contact popup: shared across pages ===== */
+            (function contactPopup(){
+            const popup = document.getElementById('contactPopup');
+            if (!popup) return; // this page might not have the popup
+
+            const openBtn  = document.getElementById('openPopupBtn');
+            const closeBtn = document.getElementById('closePopupBtn');
+            const form     = document.getElementById('contactForm');
+
+            function show() {
+                popup.style.display = 'block';
+                // next frame -> add .show so CSS fade runs
+                requestAnimationFrame(() => popup.classList.add('show'));
+                document.body.style.overflow = 'hidden';
+                document.addEventListener('keydown', onEsc);
+            }
+            function hide() {
+                popup.classList.remove('show');
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', onEsc);
+                // after CSS transition, actually remove from flow
+                setTimeout(() => { popup.style.display = 'none'; }, 180);
+            }
+            function onEsc(e){ if (e.key === 'Escape') hide(); }
+
+            // Expose for inline calls like onclick="openForm()"
+            window.openForm  = show;
+            window.closeForm = hide;
+
+            openBtn?.addEventListener('click', show);
+            closeBtn?.addEventListener('click', hide);
+            popup.addEventListener('click', (e) => { if (e.target === popup) hide(); });
+
+            // lightweight validation
+            form?.addEventListener('submit', (e) => {
+                const name  = (document.getElementById('Name')    ?.value || '').trim();
+                const email = (document.getElementById('Email')   ?.value || '').trim();
+                const phone = (document.getElementById('Phone')   ?.value || '').trim();
+                const msg   = (document.getElementById('Message') ?.value || '').trim();
+                const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                if (!name || !email || !msg || !emailOk) {
+                e.preventDefault();
+                alert('Please enter your name, a valid email, and your message.');
+                }
+            });
+            })();
+
+
+            (function wireContactForm(){
+                const form = document.getElementById('contactForm');
+                if (!form || !form.action.includes('formspree.io')) return;
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = form.querySelector('input[type="submit"]');
+                    btn.disabled = true; btn.value = 'Sending…';
+
+                    try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        form.reset();
+                        toast('Thanks! I’ll get back to you soon.');
+                        window.closeForm?.();
+                    } else {
+                        toast('Something went wrong. Please try again.');
+                    }
+                    } catch {
+                    toast('Network error. You can also email me directly.');
+                    } finally {
+                    btn.disabled = false; btn.value = 'SUBMIT';
+                    }
+                });
+
+                function toast(msg){
+                    let t = document.getElementById('toast');
+                    if (!t) {
+                    t = document.createElement('div');
+                    t.id = 'toast';
+                    Object.assign(t.style, {
+                        position:'fixed', left:'50%', bottom:'24px', transform:'translateX(-50%)',
+                        background:'rgba(22,22,26,.96)', color:'#e7e0cf', padding:'10px 14px',
+                        border:'1px solid rgba(192,167,105,.35)', borderRadius:'10px',
+                        zIndex:10002, fontFamily:'EB Garamond, serif', transition:'opacity .2s'
+                    });
+                    document.body.appendChild(t);
+                    }
+                    t.textContent = msg;
+                    t.style.opacity = 1;
+                    setTimeout(() => t.style.opacity = 0, 2800);
+                }
+                })();
+
+
+
 });
 
