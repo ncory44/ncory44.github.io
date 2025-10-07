@@ -231,6 +231,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 })();
 
+                /* Mobile nav toggle */
+                (function mobileNav(){
+                const nav = document.getElementById('MainNav');
+                if(!nav) return;
+                const btn = nav.querySelector('.NavToggle');
+                if(!btn) return;
+
+                btn.addEventListener('click', ()=>{
+                    nav.classList.toggle('nav-open');
+                    btn.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+                });
+                nav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>nav.classList.remove('nav-open')));
+                })();
+
 
 
 });

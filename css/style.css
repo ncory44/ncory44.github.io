@@ -572,3 +572,52 @@ form {
   #DevLog .Column_1 .art{ width: 100%; }
 }
 
+/* ===== Mobile navbar ===== */
+.NavToggle{ display:none; }
+
+@media (max-width: 780px){
+  .Navbar{ position: fixed; top:0; left:0; right:0; padding-right:48px; }
+  .NavToggle{
+    display:block;
+    position:absolute; right:10px; top:8px;
+    width:36px; height:36px; border-radius:8px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(0,0,0,.25); color:#fff;
+    font:700 18px/1 system-ui, sans-serif;
+  }
+
+  /* collapse links into a vertical panel */
+  .Navbar a{ display:none; width:100%; text-align:left; border-top:1px solid rgba(255,255,255,.1); }
+  .Navbar.nav-open{ transform:none !important; }          /* override hide-on-scroll */
+  .Navbar.nav-open a{ display:block; background:rgba(0,0,0,.75); }
+
+  /* make links easier to tap */
+  .Navbar a{ padding:14px 16px; font-size:18px; }
+}
+
+/* keep anchor targets from hiding under the fixed nav */
+html{ scroll-padding-top: 70px; }
+
+/* ===== Phone defaults ===== */
+@media (max-width: 600px){
+  body{ font-size: 16px; line-height: 1.5; }       /* avoids iOS zoom-on-focus */
+  p{ font-size: 16px; padding: 0 14px; }           /* less padding on small screens */
+  h1{ margin-top: 1rem; font-size: clamp(24px, 8vw, 36px); }
+
+  /* images: never force a fixed height on phones */
+  .Row img, img{ height:auto !important; width:100%; max-width:100%; }
+
+  /* columns stack (you already do at 900px; this tightens spacing on phones) */
+  .Row{ gap: 0.75rem; }
+
+  /* footer spacing */
+  footer{ padding: 14px; }
+}
+
+/* Touch devices: disable hover-zoom wiggles */
+@media (hover:none){
+  img:hover, .ProjectCard:hover{ transform:none; }
+}
+
+/* Inputs: minimum 16px font to stop iOS zoom */
+input, textarea, select{ font-size: 16px; }

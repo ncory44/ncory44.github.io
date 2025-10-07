@@ -511,3 +511,38 @@ body.theme-music #Music .Music__grid{ width: min(100%, var(--lane-right)); justi
   border-color: #c0a769;
   box-shadow: 0 0 0 3px rgba(192,167,105,.25);
 }
+
+/* ===== Music grid: stack & pad on phones ===== */
+@media (max-width: 900px){
+  body.theme-music #Music .Music__inner{
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-inline: 16px;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  /* keep video non-sticky on mobile (you already do) and give it room */
+  #Music .stickyVideo{ position: static; }
+}
+
+/* Larger gutters on very wide screens so lanes feel centered */
+@media (min-width: 1200px){
+  body.theme-music #Music .Music__inner{
+    max-width: 1400px;
+    padding-inline: clamp(24px, 6vw, 96px);
+    justify-items: center;
+  }
+  #Music .stickyVideo, .Music__grid{
+    width: min(100%, 860px);
+  }
+}
+
+/* Contact modal on phones: full-bleed-ish */
+@media (max-width: 600px){
+  .theme-music .popup-content{ width: 92vw; }
+}
+
+/* Contact floating button size on phones */
+@media (max-width: 600px){
+  .theme-music .contact-btn{ font-size: 18px; padding: .7rem 1rem; right: 1rem; bottom: 1rem; }
+}
