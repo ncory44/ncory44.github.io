@@ -1,197 +1,100 @@
 <!DOCTYPE html>
-<html>
-<!--Head-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" />
-    <meta name="author" content="Nathan Cory">
-    <meta name="copyright" content="© Nathan Cory">
-
-    <title>Nathan Cory</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" href="images/favicon.png" type="image/svg+xml">
-    <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
-    <meta name="description" content="Nathan Cory — Game dev & UI systems. Unity, Unreal, C#, C++. Selected projects and dev logs.">
-    
-
-    <script src="JS/javascript.js" defer></script>
-</head>
-
-<!--Body-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nathan Cory | Game Dev</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="images/favicon.png">
+    </head>
 <body class="Background">
     
-    <!--Navbar-->
-    <div class="Navbar">
-        <a class="active" href="#Home">Home</a>
-        <a href="#About">About</a>
-        <a href="#GitHub">GitHub</a>
-        <a href="https://www.linkedin.com/in/nathan-cory-dev/">Linkedin</a>
-        <a href="https://docs.google.com/document/d/1S2JhuNTjAV2fmitvkpjrdHl7kQrQr-jH/edit?usp=sharing&ouid=101688439074960429672&rtpof=true&sd=true">Resume</a>
-        <a href="#Projects">Current Project</a> 
-        <a href="music.html">Music</a>
-        <!-- Keep inline call; JS now exposes openForm globally -->
-        <a href="#Home" onclick="openForm()">Contact</a>
+    <div class="Scanlines"></div>
+
+    <nav class="Navbar term" id="MainNav">
+        <div class="NavLinks">
+            <a href="#Home">HOME</a>
+            <a href="#About">ABOUT</a>
+            <a href="https://www.linkedin.com/in/nathan-cory-dev/">Linkedin</a>
+            <a href="https://docs.google.com/document/d/1S2JhuNTjAV2fmitvkpjrdHl7kQrQr-jH/edit?usp=sharing&ouid=101688439074960429672&rtpof=true&sd=true">Resume</a>
+            <a href="#Home" onclick="openForm()">CONTACT</a>
+            <a href="music.html">Music</a>
+        </div>
         <button class="NavToggle" aria-expanded="false" aria-label="Menu">☰</button>
-    </div>
+    </nav>
 
-    <!--Breaks inserted to add space between navbar and the first heading-->
-    <br>
-    <br>
-
-    <!--Background video-->
-    <div id="Home">
-        <video autoplay muted loop id="Coding_Video">
-            <source src="images/videos/coding.mp4" type="video/mp4">
-            <!--Display message if video fails to run-->
-            Your browser does not support HTML5 video.
-        </video>
-    </div>
-
-    <!--Video text (expanded to cover full page initially, no button)-->
-    <div class="Video_Text">
-        <h1 style="font-size:6vw;" class="yellow-text">Nathan's Portfolio</h1>
-        <strong>
-            <p class="center term">
-                <q>Hello, World</q><span class="blink">█</span>
-                <br>
-                <br> My name is Nathan. Welcome to my portfolio website. On it, I will tell you about my background and experience.
-                <br>
-                <br> Thank you for stopping by and enjoy!
-            </p>
-        </strong>
-
-        <!-- Optional tiny mascot (uses a spritesheet you export) -->
-        <div class="mascot" aria-hidden="true" title=""></div>
-    </div>
-
-    <!--About section-->
-    <div class="Row" id="About">
-        <!--Left column-->
-        <div class="Column_2">
-            <img src="images/profilePic.jpg" width="420" alt="computer office" loading="lazy">
+    <header id="Home" class="Hero full-screen">
+        <div class="Grid-Background"></div> <div class="Hero-Content">
+            <h1 class="glitch yellow-text huge-title" data-text="NATHAN'S PORTFOLIO">NATHAN'S PORTFOLIO</h1>
+            
+            <div class="MascotContainer">
+                <img src="images/potatobotIdle+headturn.gif" alt="Potatobot" class="pixel mascot-xl">
+            </div>
+        <div class="HeroText term intro-text">
+            <p>> Hello world!</p>
+            <p>> My name is Nathan: Indie Game Dev & Full Stack Developer.</p>
+            <p>> Specializing in Unity, C#, and high-stakes systems.</p>
         </div>
-        <!--Right column-->
-        <div class="Column_1">
-            <h1>About</h1>
-            <hr>
-            <p>
-                I am a software developer who loves to code! I fell in love with coding playing games, and wanting to get to know what was going on behind the scenes.
-                <br>
-                <br>I am a graduate of <a href="https://www.learncodinganywhere.com" target="_blank" rel="noopener noreferrer">The Tech Academy</a>’s Software Developer Boot Camp, and trained and experienced in the following web and programming languages: HTML, CSS, JavaScript, SQL, C#, C++, and Unity. My experience with C++ and Unity has allowed me to build performant, interactive applications, including game development projects like Nuclear Control, where I leveraged Unity’s engine and C++ for optimized systems and gameplay mechanics.
-                <br>
-                <br>I am a full-stack developer and would love to work with you on your project. <a href="#Home" onclick="openForm()">Contact</a> me below!
-            </p>
-        </div>
-    </div>
+    </header>
 
-    <!--GitHub section-->
-    <div class="Row" id="GitHub">
-        <!--Left column-->
-        <div class="Column_1">
-            <h1>GitHub</h1>
-            <p>
-                You can view my coding projects on my GitHub profile here:
-                <br>
-            <p class="center"><a href="https://github.com/ncory44" target="_blank" rel="noopener noreferrer">Nathan's Github</a></p>
-            </p>
-        </div>
-        <!--Right column-->
-        <div class="Column_2">
-            <a href="https://github.com/ncory44" target="_blank" rel="noopener noreferrer">
-                <img src="images/githublogo.png" alt="GitHub Logo" loading="lazy">
-            </a>
-        </div>
-    </div>
+    <main class="ContentWrap">
+        <section class="ProjectRow" id="About">
+            <div class="ProjectImage">
+                <img src="images/profilePic.jpg" alt="Nathan Cory" class="pixel-border">
+            </div>
+            <div class="ProjectInfo">
+                <h2 class="term yellow-text">01. ABOUT_ME</h2>
+                <p>I’m a bootcamp-trained developer who fell in love with coding through games. Right now I’m deep in my first indie title Contraband, a tense river-hauling prototype with dynamic NPC behavior, time-pressure docks, and original adaptive music  and artwork.</p>
+                <p>Based in LA, I’m hungry to join a team as a junior gameplay programmer or Unity dev. I’m always tearing apart mechanics to see what makes them tick.</p>
+            </div>
+        </section>
 
-    <!-- Projects section -->
-    <div class="Row" id="Projects">
-        <!-- IMAGE ON LEFT -->
-        <div class="Column_2">
-            <img src="images/mainRoomSprite.png" alt="Nuclear Reactor Game Concept" loading="lazy" class="pixel">
-        </div>
-        <!-- TEXT ON RIGHT -->
-        <div class="Column_1">
-            <h1>Nuclear Control</h1>
-            <p>
-                A systems-driven simulation inspired by real-world nuclear operations.
-                <br><br>
-                Monitor reactor status, reroute energy, and survive failure scenarios as a lone technician left behind.
-                <br><br><em>Systems Used:</em> C#, Unity, Aseprite
-            </p>
-        </div>
-    </div>
+        <section class="ProjectRow" id="Contraband">
+            <div class="ProjectImage">
+                <img src="images/coverIdeaNewTitle.png" alt="Contraband" class="pixel">
+            </div>
+            <div class="ProjectInfo">
+                <h2 class="term yellow-text">02. CONTRABAND</h2>
+                <p>Haul high-risk cargo across decaying orbital stations. Must balance your supply on a rickety boat while maneuvering through obstacles and competing smugglers. Physics-based environment.</p>
+                <p><strong>Tech:</strong> Unity, C#, Aseprite</p>
+                <div class="ProjectLinks">
+                    <a href="https://github.com/ncory44/Cargo" target="_blank" class="Btn-Outline">REPO_ACCESS_LINK</a>
+                </div>
 
-    <!-- Projects Grid (Karateka + Unreal) -->
-    <section class="ProjectsGrid">
-      <!-- Karateka Remaster -->
-      <article class="ProjectCard">
-        <img class="pixel" src="images/KaratekaGif.gif" alt="Karateka prototype" loading="lazy">
-        <h3>Karateka (Remaster Study)</h3>
-        <p class="stack"><em>Tech:</em> C#, Unity Timeline/Anim, Aseprite</p>
-        <p>Recreating classic timing, rotoscoped feel, and hit-stop. Built a state machine with buffered inputs and frame-accurate windows.</p>
-      </article>
+                <details class="DevLog-Dropdown term">
+                    <summary>ACCESS_DEV_LOG.txt</summary>
+                    <div class="DevLog-Content">
+                        <ul>
+                            <li> Working on enemy logic, other boats that ram into you and take your cargo</li>
+                            <li> UI for end rounds, large painted chinese letters count down from 5 to end job</li>
+                            <li> Created some early cover art referencing Shan Shui style</li>
+                        </ul>
+                        <div class="ConceptArt">
+                            <img src="images/boat.jpg" alt="Boat gameplay image" class="pixel">
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
 
-      <!-- Unreal Offroad / Race Systems -->
-      <article class="ProjectCard">
-        <img class="pixel" src="images/UnrealRaceScreenshot.png" alt="Unreal offroad system" loading="lazy">
-        <h3>Unreal Systems: Offroad/Race</h3>
-        <p class="stack"><em>Tech:</em> UE 5.6 Blueprints, Chaos, AI Nav</p>
-        <p>Checkpoint system, lap timer, collectible logic, and AI cars that can “steal” pickups. Includes GameMode win/lose with HUD.</p>
-      </article>
-    </section>
+        <section class="ProjectRow">
+            <div class="ProjectImage">
+                <img src="images/KaratekaGif.gif" alt="Karateka Study" class="pixel">
+            </div>
+            <div class="ProjectInfo">
+                <h2 class="term yellow-text">03. KARATEKA_STUDY</h2>
+                <p>A deep-dive into classic timing and rotoscoped animation feel. Built a state machine with buffered inputs and frame-accurate hit-stop windows.</p>
+                <p><strong>Tech:</strong> C#, Unity Timeline, Aseprite</p>
+                <div class="ProjectLinks">
+                    <a href="https://github.com/ncory44" target="_blank" class="Btn-Outline">REPO_ACCESS_LINK</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Dev Log section -->
-    <div class="Row" id="DevLog">
-        <div class="Column_2">
-            <h1>Dev Log</h1>
-            <p>
-                • Added a functioning UI readout for reactor core temperature<br>
-                • Implemented power routing minigame using Unity UI<br>
-                • Researching real meltdown scenarios for better accuracy<br>
-                • Adjusted setting to take place on Uranus, floating refinery
-            </p>
-        </div>
-        <div class="Column_1">
-            <img src="images/newgameConceptArt.png" alt="Space Station Concept Art" loading="lazy" class="art">
-            <img src="images/spacesuitConcept.png" alt="Space Suit Concept Art" loading="lazy" class="art">
-        </div>
-    </div>
-
-    <!--Popup Form-->
-    <div id="contactPopup" class="popup">
-        <div class="popup-content">
-            <span id="closePopupBtn" class="close-btn">×</span>
-            <h2>Contact Me</h2>
-            <form id="contactForm" action="https://formspree.io/f/xzzdeaez" method="POST">
-                <label>Name:</label>
-                <input type="text" id="Name" name="name" required>
-
-                <label>Email:</label>
-                <input type="email" id="Email" name="email" required>
-
-                <label>Phone:</label>
-                <input type="tel" id="Phone" name="phone" pattern="[\d\s()+-]{7,}">
-
-                <label>Message:</label>
-                <textarea id="Message" name="message" rows="4" required></textarea>
-
-                <!-- spam honeypot -->
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                <input type="hidden" name="_subject" value="Portfolio contact from your site">
-                <input type="submit" value="SUBMIT">
-            </form>
-        </div>
-    </div>
-
-    <!--Fixed Contact Button-->
-    <button id="openPopupBtn" class="contact-btn">Contact Me</button>
-
-    <!--Footer section-->
-    <footer>
-        <p class="SiteCredit">
-            © <span id="year"></span> Nathan Cory · Design & code by Nathan Cory
-        </p>
+    <footer class="term">
+        <p>© <span id="year">2026</span> NATHAN CORY // ALL SYSTEMS GO</p>
     </footer>
-</body>
+
+    </body>
 </html>

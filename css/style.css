@@ -1,624 +1,342 @@
-@import url('https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
-/* ---------- Palette Tokens ---------- */
-:root{
-  --ink:#0d0f1a;
-  --crt:#1e1e1e;
-  --phosphor:#2cac05;
-  --magenta:#d7005c;
-  --amber:#ffb343;
-  --sun:#f9f871;
-  --paper:#f2f2f2;
+/* --- GLOBAL FIXES --- */
+html { 
+    scroll-behavior: smooth; 
+    /* This creates the 'gap' so the Navbar doesn't cover your titles */
+    scroll-padding-top: 100px; 
 }
 
-/***** ANIMATIONS *****/
-/*contact bounce animation*/
-@keyframes bounce {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
-}
 
-/*background vid zoom in and out*/
-@keyframes zoomInOut {
-    0% { transform: scale(1, 1); }
-    50% { transform: scale(1.05, 1.05); }
-    100% { transform: scale(1, 1); }
-}
-
-/***** GENERAL STYLING *****/
-/*html*/
-html { scroll-behavior: smooth; }
-
-/* Body */
-body {
-    margin: 0%;
-    background: var(--ink);
-    color: var(--paper);
-}
-
-/* Heading 1 elements */
-h1 {
-    text-transform: uppercase;
-    font-family: "Black Han Sans", serif;
-    text-align: center;
-    margin-top: 3%;
-    color: #000080;
-    transition: transform .5s ease-in-out;
-    transform: scale(1);
-}
-
-/* Heading 1 element hover effect */
-h1:hover { filter: grayscale(5%); transform: scale(1.05); transition: transform .5s; }
-
-/* Styling for portfolio title text */
-.yellow-text { color: var(--sun); }
-
-/* Paragraph elements */
-p {
-    font-family: "Syne", serif;
-    text-align: justify;
-    letter-spacing: 1px;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    transition: transform .5s ease-in-out;
-    transform: scale(1);
-}
-p:hover { transition: transform .5s; transform: scale(1.01); }
-
-/* Center class */
-.center { text-align: center; transition: transform 1s ease-in-out; transform: scale(1); }
-.center:hover { transition: transform 1s; transform: scale(1.1); }
-
-/* Anchor elements */
-a { color: var(--magenta); }
-
-/* Quotation elements */
-q { font-style: italic; }
-
-/* Pixel rendering helper */
-.pixel { image-rendering: pixelated; image-rendering: crisp-edges; }
-
-/* Terminal text + blink */
-.term { font-family: "VT323", monospace; color: var(--sun); }
-.blink { animation: blink 1s steps(2, end) infinite; }
-@keyframes blink { 0%,50%{opacity:1} 50.1%,100%{opacity:0} }
-
-/* Image elements */
-img {
-    filter: grayscale(75%);
-    border-radius: 8px;
-    max-width: 100%;
-    height: 340px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    transition: transform .5s ease-in-out;
-    transform: scale(1);
-}
-img:hover { filter: grayscale(5%); transition: transform .5s; transform: scale(1.08); }
-
-/* On screens 576px and smaller the images will be 100px tall and centered vertically in the column */
-@media screen and (max-width: 576px) {
-    img { height: 100px; margin-top: 150px; }
-}
-
-/* FOOTER */
-footer { padding: 2%; background-color: var(--amber); }
-
-/***** NAVBAR STYLING (with hide-on-scroll) *****/
-.Navbar {
-  overflow: hidden;
-  background-color: var(--ink);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-
-  /* existing load-in animation */
-  -webkit-animation: moveNav 1s;
-  animation: moveNav 1s;
-
-  /* new: slide away / return */
-  transition: transform 240ms ease, background-color 200ms ease, box-shadow 200ms ease;
-  will-change: transform;
-  transform: translateY(0);
-}
-
-/* slide navbar up when scrolling down */
-.Navbar.nav-hidden {
-  transform: translateY(-100%);
-}
-
-/* add subtle shadow/solid bg after you’ve scrolled a bit */
-.Navbar.nav-scrolled {
-  background-color: rgba(13, 15, 26, 0.9);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
-
-/* load-in from left (unchanged) */
-@keyframes moveNav { from { left: -100vw; } to { left: 0vw; } }
-
-/* NAVBAR LINKS */
-.Navbar a {
-  float: left;
-  display: block;
-  color: var(--sun);
-  padding: 14px 16px;
-  text-decoration: none;
-  font-family: "Economica", serif;
-  font-size: 30px;
-  text-align: center;
-  position: relative;
-  -webkit-animation: moveNavText 3s;
-  animation: moveNavText 3s;
-}
-
-/* move-in for link text (unchanged) */
-@keyframes moveNavText { from { top: -100vw; } to { top: 0vw; } }
-
-/* responsive links */
-@media screen and (max-width: 576px) {
-  .Navbar a { width: 25%; font-size: 12px; }
-}
-
-/* hover + active */
-.Navbar a:hover {
-  background-color: var(--sun);
-  color: black;
-  font-weight: bold;
-}
-.Navbar a.active { background-color: var(--magenta); }
-
-/* keep anchor targets from tucking under the fixed nav */
-html { scroll-padding-top: 70px; } /* adjust if your nav height changes */
-
-/** VIDEO **/
-/*formatting for background video*/
-#Coding_Video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    z-index: -1;
-    animation: zoomInOut 15s ease-in-out infinite;
-    transform: translateZ(0);
-}
-
-/* screens that are 576px and smaller will not display the background video */
-@media screen and (max-width: 576px) {
-    #Coding_Video { display: none; }
-}
-
-/* text over the video (expanded to cover full page initially, no button) */
-.Video_Text {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    width: 100%;
+/* --- 1. THE HERO (Full Screen & Grid) --- */
+.full-screen {
     height: 100vh;
-    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center;
     position: relative;
-    -webkit-animation: moveVideoText 3s;
-    animation: moveVideoText 3s;
-    isolation: isolate;
-}
-/* subtle scanlines + vignette for intentional retro feel */
-.Video_Text::before{
-  content:"";
-  position:absolute; inset:0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.05) 0px,
-    rgba(255,255,255,.05) 1px,
-    transparent 2px,
-    transparent 3px
-  );
-  mix-blend-mode: overlay;
-  pointer-events:none;
-}
-.Video_Text::after{
-  content:"";
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,.5) 100%);
-  pointer-events:none;
+    background: #050505;
+    overflow: hidden;
+    padding-top: 80px; /* Prevents Navbar overlap */
 }
 
-/* mascot (expects images/sprites/robo_walk.png with 12 frames, 48x48 each) */
-.mascot{
-  position:absolute; left: 2rem; bottom: 2rem;
-  width:48px; height:48px;
-  background: url('../images/sprites/robo_walk.png') 0 0 no-repeat;
-  image-rendering: pixelated;
-  animation: mascotWalk 1s steps(12) infinite, mascotDrift 16s linear infinite alternate;
-  opacity:.9;
-}
-@keyframes mascotWalk { from{ background-position:0 0; } to{ background-position:-576px 0; } }
-@keyframes mascotDrift { from{ transform: translateX(0); } to{ transform: translateX(40vw);} }
-
-/* This animation effect causes the overlay video text to move up from the bottom of the page upon page load */
-@keyframes moveVideoText { from {top: -100vh;} to {top: 0vh;} }
-/***** END OF VIDEO STYLING *****/
-
-/***** TABLE STYLING *****/
-* { box-sizing: border-box; }
-
-/*about styling*/
-#About {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-#About.fade-in { opacity: 1; transform: translateY(0); }
-
-.Column_1 {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    padding-top: 3%;
-    height: 400px;
-    background-color: var(--paper);
+.Grid-Background {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 50%;
+    background-image: 
+        linear-gradient(rgba(249, 228, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 228, 0, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    perspective: 500px;
+    transform: rotateX(60deg) scale(2);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1), transparent);
+    z-index: 1;
 }
 
-/* Screens 576px and smaller will display a scroll bar if the text overflows the column height */
-@media screen and (max-width: 576px) {
-    .Column_1 { overflow: auto; }
+.Hero-Content { z-index: 2; text-align: center; }
+
+.huge-title {
+    font-size: clamp(3rem, 10vw, 8rem); /* Responsive scaling */
+    line-height: 0.9;
+    margin-bottom: 20px;
 }
 
-.Column_2 {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    padding-top: 1.9%;
-    height: 400px;
-    background-color: var(--amber);
+.mascot-xl {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(249, 228, 0, 0.2));
 }
 
-/* Taller contact row override (used elsewhere if needed) */
-.Column_tall { padding-top: 3.5%; height: 450px; }
-
-.Row:after { content: ""; display: table; clear: both; }
-/***** END OF TABLE STYLING *****/
-
-/***** CONTACT FORM STYLING *****/
-input[type=text], input[type=tel] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-    font-family: Perpetua, Rockwell Extra Bold;
-}
-input[type=text]:hover, input[type=tel]:hover { box-shadow: 0 0 5px #00004d inset; }
-
-input[type=submit] {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Perpetua, Rockwell Extra Bold;
-}
-input[type=submit]:hover {
-    background-color: white;
-    color: black;
-    transform: scale(1.5);
-    transition: transform 1.5s;
-}
-form {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 10px;
-    font-family: "Trebuchet MS", Optima;
+/* --- 2. THE NAVBAR (Hide/Show Logic) --- */
+.Navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(5, 5, 5, 0.9);
+    border-bottom: 2px solid var(--sun);
+    z-index: 1000;
+    transition: transform 0.4s ease-in-out; /* For the hide/show JS */
 }
 
-/*Popup styling*/
+/* Class triggered by your JS */
+.nav-hidden { transform: translateY(-100%); }
+
+.NavLinks {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 15px 0;
+}
+
+/* Fix: Hamburger hidden on Desktop */
+.NavToggle { display: none; }
+
+/* --- 3. THE CONTACT POPUP --- */
 .popup {
-    display: none;
+    display: none; /* JS toggles this */
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.popup.show { display: block; } /* Matches your JS requestAnimationFrame */
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .NavToggle { 
+        display: block; 
+        position: absolute; right: 20px; top: 15px;
+        background: var(--sun); color: #000; border: none; padding: 5px 10px;
+    }
+    .NavLinks { display: none; flex-direction: column; }
+    .nav-open .NavLinks { display: flex; background: #000; }
+}
+
+
+
+/* --- 1. FULL SCREEN LANDER & BACKGROUND --- */
+.full-screen {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Keeps the grid from spilling out */
+    background: #050505;
+}
+
+/* The Grid Effect */
+.Grid-Background {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(249, 228, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 228, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center;
+    perspective: 500px;
+    transform: rotateX(45deg); /* Flattens it like a floor */
+    z-index: 1;
+}
+
+.Hero-Content {
+    position: relative;
+    z-index: 2; /* Sits above the grid */
+    text-align: center;
+}
+
+/* Sizing Updates */
+.huge-title {
+    font-size: 8vw; /* Makes it scale with screen width */
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+.mascot-xl {
+    width: 250px; /* Big robot! */
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(249, 228, 0, 0.3));
+}
+
+.intro-text {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    line-height: 1.8;
+}
+
+/* --- 2. RETRO NAVBAR --- */
+.Navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.95);
+    border-bottom: 2px solid var(--sun);
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.NavLinks {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.Navbar a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 5px 15px;
+    transition: 0.2s;
+}
+
+.Navbar a:hover, .Navbar a.active {
+    color: #000;
+    background: var(--sun);
+}
+
+/* --- 3. CRT SCANLINES OVERLAY --- */
+.Scanlines {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-}
-.popup-content {
-    background-color: #f2f2f2;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-.close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 25px;
-    color: #000080;
-    cursor: pointer;
-}
-.close-btn:hover { color: #d7005c; }
-.popup-content h2 {
-    margin-top: 0;
-    color: #000080;
-    font-family: "Black Han Sans", serif;
-    text-align: center;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.1) 50%
+    ), linear-gradient(
+        90deg, 
+        rgba(255, 0, 0, 0.02), 
+        rgba(0, 255, 0, 0.01), 
+        rgba(0, 0, 255, 0.02)
+    );
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none; /* Let clicks pass through */
+    z-index: 9999;
 }
 
-/* Contact button */
-.contact-btn {
-    background-color: var(--ink);
-    color: var(--sun);
-    padding: 1vw;
-    border: none;
-    border-radius: 4px;
-    font-family: "Syne", serif;
-    font-size: 1.5vw;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    animation: bounce 1.5s ease-in-out infinite;
-    position: fixed;
-    bottom: 1.75vw; right: 1.75vw;
-    z-index: 100;
-    -webkit-animation: movePopup 5s;
-    animation: movePopup 5s;
-}
-@keyframes movePopup { from { right: -40vw; } to { right: 1.75vw; } }
-@-webkit-keyframes movePopup { from { right: -40vw; } to { right: 1.75vw; } }
-.contact-btn:hover { background-color: #940074; color: black; transform: scale(1.05); }
 
-/*  section-specific image sizing fixes  */
-#About .Column_2 img { max-width: 80%; height: auto; margin-bottom: 15px; }
 
-/*  Projects   */
-#Projects {
-    display: block;
-    overflow: hidden;
-    background-color: var(--crt);
-    color: var(--paper);
-    font-family: 'Courier New', Courier, monospace;
-    padding: 2em 0;
-    clear: both;
-}
-#Projects:after { content: ""; display: table; clear: both; }
-#Projects .Column_1, #Projects .Column_2 {
-    height: 100%;
-    background-color: var(--crt);
-    color: var(--paper);
-    padding-top: 3%;
-}
-#Projects h1{
-    text-transform: uppercase;
-    font-family: "VT323", monospace;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 3%;
-    color: var(--phosphor);
-    transition: transform .5s ease-in-out;
-    transform: scale(1);
-}
-#Projects p { color: var(--paper); }
-#Projects img {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    filter: none; /* override global grayscale */
+:root {
+  --bg: #050505;
+  --surface: #111;
+  --text: #e0e0e0;
+  --sun: #f9e400; /* Your bold yellow */
+  --accent: #00f0ff; /* Cyber Cyan */
+  --border: #333;
 }
 
-/*  new grid cards for projects  */
-.ProjectsGrid{
-  background: var(--crt);
-  padding: 2.5rem 1rem;
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  border-top: 1px solid #2a2a2a;
-}
-.ProjectCard{
-  background: #131313;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
-  padding: 1rem;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.ProjectCard:hover{ transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
-.ProjectCard h3{ font-family:"VT323", monospace; color: var(--phosphor); font-size: 32px; margin: .5rem 0 .25rem; text-align:left; }
-.ProjectCard p{ color:#ddd; text-align:left; padding:0; font-size:16px; }
-.ProjectCard .stack{ color:#aaa; font-family:"Syne", sans-serif; margin-bottom:.5rem; }
-.ProjectCard img{ width:100%; height:auto; filter:none; border-radius:6px; }
-.ProjectCard .links a{ color: var(--magenta); margin-right: 14px; text-decoration:none; font-weight:700; }
-.ProjectCard .links a:hover{ text-decoration:underline; }
-
-/* DevLog */
-#DevLog { background-color: var(--paper); }
-#DevLog p { color: #000; }
-
-/* Accessibility: respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{ animation: none !important; transition: none !important; }
-  #Coding_Video{ animation: none !important; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
 }
 
-/*  fix: readable text on light columns + no overflow  */
-.Column_1,
-.Column_2 {
-  color: var(--ink);           /* dark text on light/amber boxes */
-  height: auto !important;     /* let boxes grow with content */
-  min-height: 400px;           /* keep your original visual height */
-}
+.term { font-family: 'VT323', monospace; text-transform: uppercase; }
+.yellow-text { color: var(--sun); }
+.pixel { image-rendering: pixelated; }
 
-/* making sure links still pop in those light sections */
-.Column_1 a,
-.Column_2 a { color: var(--magenta); }
-
-/* readable headings */
-.Column_1 h1,
-.Column_2 h1 { color: #000080; }
-
-
-/*  equal-height rows  */
-.Row{
+/* --- HERO SECTION --- */
+.Hero {
+  height: 80vh;
   display: flex;
-  align-items: stretch;      /* make columns match tallest sibling */
-}
-
-.Column_1,
-.Column_2{
-  float: none;               /* disable float layout */
-  width: 50%;
-  height: auto !important;   /* grow with content */
-  min-height: 400px;         /* keep your visual baseline height */
-  color: var(--ink);         /* readable text on light backgrounds */
-  display: flex;             /* ensure background fills full column */
   flex-direction: column;
-}
-
-.Column_1 a, .Column_2 a{ color: var(--magenta); }
-
-.Column_1 h1, .Column_2 h1{ color: #000080; }
-
-@media (max-width: 900px){
-  .Row{ flex-direction: column; }
-  .Column_1, .Column_2{ width: 100%; min-height: unset; }
-}
-
-
-/*  fix for nuclear control */
-#Projects{
-  display: flex !important;     /* override the old display:block */
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  text-align: center;
+  background: radial-gradient(circle, #1a1a00 0%, #050505 100%);
 }
 
-
-#Projects .Column_1,
-#Projects .Column_2{
-  width: 50%;
-  height: auto !important;       /* override height:100% */
-  background-color: var(--crt);
-  color: var(--paper);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#Projects img{
-  filter: none;
-  max-width: 95%;
+.mascot-large {
+  width: 150px;
   height: auto;
-  margin: 0 auto;
+  margin: 20px 0;
 }
 
-/* Stack on small screens */
-@media (max-width: 900px){
-  #Projects{ flex-direction: column; }
-  #Projects .Column_1, #Projects .Column_2{ width: 100%; }
+/* --- CHECKERBOARD LAYOUT --- */
+.ContentWrap { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+
+.ProjectRow {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 100px;
 }
 
-/* DevLog image fix (side by side) */
-#DevLog .Column_1{
-  display: flex;                
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1rem;                   
-  flex-wrap: wrap;            
+/* This creates the back-and-forth pattern */
+.ProjectRow:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
-#DevLog .Column_1 img{
-  width: calc(50% - .5rem);     /* two-up layout */
-  height: auto;                 
-  margin: 0;                    
-  filter: none;                 
-  border-radius: 10px;
+.ProjectImage, .ProjectInfo {
+  flex: 1;
 }
 
-/* Stack on small screens */
-@media (max-width: 900px){
-  #DevLog .Column_1{ flex-direction: column; }
-  #DevLog .Column_1 img{ width: 100%; }
+.ProjectImage img {
+  width: 100%;
+  border: 4px solid var(--border);
+  transition: border-color 0.3s;
 }
 
-
-/* smooth rendering for line art */
-#DevLog .art{
-  image-rendering: auto;              
-  height: auto;                      
-  filter: none;                       
+.ProjectRow:hover .ProjectImage img {
+  border-color: var(--sun);
 }
 
-
-#DevLog .Column_1{
-  display: flex; flex-direction: row; align-items: flex-start;
-  justify-content: center; gap: 1rem; flex-wrap: wrap;
-}
-#DevLog .Column_1 .art{ width: calc(50% - .5rem); border-radius: 10px; margin: 0; }
-@media (max-width: 900px){
-  #DevLog .Column_1{ flex-direction: column; }
-  #DevLog .Column_1 .art{ width: 100%; }
+/* --- DEVLOG DROPDOWN --- */
+.DevLog-Dropdown {
+  margin-top: 20px;
+  background: #111;
+  border: 1px solid var(--sun);
+  padding: 10px;
 }
 
-/* ===== Mobile navbar ===== */
-.NavToggle{ display:none; }
+.DevLog-Dropdown summary {
+  cursor: pointer;
+  color: var(--sun);
+  padding: 5px;
+  list-style: none;
+}
 
-@media (max-width: 780px){
-  .Navbar{ position: fixed; top:0; left:0; right:0; padding-right:48px; }
-  .NavToggle{
-    display:block;
-    position:absolute; right:10px; top:8px;
-    width:36px; height:36px; border-radius:8px;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.25); color:#fff;
-    font:700 18px/1 system-ui, sans-serif;
+.DevLog-Dropdown summary:hover {
+  background: var(--sun);
+  color: #000;
+}
+
+.DevLog-Content {
+  padding: 15px;
+  border-top: 1px solid #333;
+  font-size: 14px;
+}
+
+.ConceptArt {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.ConceptArt img {
+  width: 48%;
+  height: auto;
+}
+
+/* --- BUTTONS --- */
+.Btn-Outline {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid var(--sun);
+  color: var(--sun);
+  text-decoration: none;
+  font-family: 'VT323', monospace;
+  transition: 0.3s;
+}
+
+.Btn-Outline:hover {
+  background: var(--sun);
+  color: #000;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+  .ProjectRow, .ProjectRow:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
   }
-
-  /* collapse links into a vertical panel */
-  .Navbar a{ display:none; width:100%; text-align:left; border-top:1px solid rgba(255,255,255,.1); }
-  .Navbar.nav-open{ transform:none !important; }          /* override hide-on-scroll */
-  .Navbar.nav-open a{ display:block; background:rgba(0,0,0,.75); }
-
-  /* make links easier to tap */
-  .Navbar a{ padding:14px 16px; font-size:18px; }
 }
 
-/* keep anchor targets from hiding under the fixed nav */
-html{ scroll-padding-top: 70px; }
-
-/* ===== Phone defaults ===== */
-@media (max-width: 600px){
-  body{ font-size: 16px; line-height: 1.5; }       /* avoids iOS zoom-on-focus */
-  p{ font-size: 16px; padding: 0 14px; }           /* less padding on small screens */
-  h1{ margin-top: 1rem; font-size: clamp(24px, 8vw, 36px); }
-
-  /* images: never force a fixed height on phones */
-  .Row img, img{ height:auto !important; width:100%; max-width:100%; }
-
-  /* columns stack (you already do at 900px; this tightens spacing on phones) */
-  .Row{ gap: 0.75rem; }
-
-  /* footer spacing */
-  footer{ padding: 14px; }
+/* Enable smooth scrolling for the whole page */
+html { 
+    scroll-behavior: smooth; 
 }
 
-/* Touch devices: disable hover-zoom wiggles */
-@media (hover:none){
-  img:hover, .ProjectCard:hover{ transform:none; }
+:target {
+    scroll-margin-top: 100px;
 }
 
-/* Inputs: minimum 16px font to stop iOS zoom */
-input, textarea, select{ font-size: 16px; }
-
+/* The state triggered by your JS */
+.nav-hidden {
+    transform: translateY(-100%);
+}
