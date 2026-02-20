@@ -8,6 +8,17 @@
   --art-aspect: 5 / 4;  /* artwork thumbnail aspect */
 }
 
+/* Fix overlap on Music Page */
+#MusicHero {
+    padding-top: 100px; 
+    min-height: 60vh;  
+}
+
+.theme-music .NavLinks {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
 /* ==========================================================================
    Navbar (music theme only)
    ========================================================================== */
@@ -16,6 +27,7 @@
   backdrop-filter: blur(4px);
   border-bottom: 1px solid rgba(192,167,105,.25);
   text-align: center;
+  padding: 10px 0;
 }
 .theme-music .Navbar a{
   font-family: "EB Garamond", serif;

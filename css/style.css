@@ -120,6 +120,7 @@ html {
     border-bottom: 2px solid var(--sun);
     z-index: 1000;
     padding: 10px 0;
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-hidden { transform: translateY(-100%); }
