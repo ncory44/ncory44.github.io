@@ -1,22 +1,20 @@
 /* --- GLOBAL FIXES --- */
 html { 
     scroll-behavior: smooth; 
-    /* This creates the 'gap' so the Navbar doesn't cover your titles */
+    /* gap for navbar */
     scroll-padding-top: 100px; 
 }
 
-
-/* --- 1. THE HERO (Full Screen & Grid) --- */
 .full-screen {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers content vertically */
+    justify-content: center;
     align-items: center;
     position: relative;
     background: #050505;
     overflow: hidden;
-    padding-top: 80px; /* Prevents Navbar overlap */
+    padding-top: 80px; 
 }
 
 .Grid-Background {
@@ -47,32 +45,9 @@ html {
     filter: drop-shadow(0 0 20px rgba(249, 228, 0, 0.2));
 }
 
-/* --- 2. THE NAVBAR (Hide/Show Logic) --- */
-.Navbar {
-    position: fixed;
-    top: 0; width: 100%;
-    background: rgba(5, 5, 5, 0.9);
-    border-bottom: 2px solid var(--sun);
-    z-index: 1000;
-    transition: transform 0.4s ease-in-out; /* For the hide/show JS */
-}
-
-/* Class triggered by your JS */
-.nav-hidden { transform: translateY(-100%); }
-
-.NavLinks {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 15px 0;
-}
-
-/* Fix: Hamburger hidden on Desktop */
-.NavToggle { display: none; }
-
-/* --- 3. THE CONTACT POPUP --- */
+/* --- CONTACT POPUP --- */
 .popup {
-    display: none; /* JS toggles this */
+    display: none; 
     position: fixed;
     z-index: 2000;
     inset: 0;
@@ -80,7 +55,7 @@ html {
     backdrop-filter: blur(5px);
 }
 
-.popup.show { display: block; } /* Matches your JS requestAnimationFrame */
+.popup.show { display: block; } 
 
 /* Mobile Styling */
 @media (max-width: 768px) {
@@ -95,7 +70,7 @@ html {
 
 
 
-/* --- 1. FULL SCREEN LANDER & BACKGROUND --- */
+/* --- LANDER & BACKGROUND --- */
 .full-screen {
     height: 100vh;
     width: 100%;
@@ -104,7 +79,7 @@ html {
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden; /* Keeps the grid from spilling out */
+    overflow: hidden; 
     background: #050505;
 }
 
@@ -119,7 +94,7 @@ html {
     background-size: 50px 50px;
     background-position: center;
     perspective: 500px;
-    transform: rotateX(45deg); /* Flattens it like a floor */
+    transform: rotateX(45deg); 
     z-index: 1;
 }
 
@@ -148,7 +123,7 @@ html {
     line-height: 1.8;
 }
 
-/* --- 2. RETRO NAVBAR --- */
+/* --- NAVBAR --- */
 .Navbar {
     position: fixed;
     top: 0;
@@ -178,7 +153,16 @@ html {
     background: var(--sun);
 }
 
-/* --- 3. CRT SCANLINES OVERLAY --- */
+.NavLinks {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 15px 0;
+}
+
+.NavToggle { display: none; }
+
+/* --- CRT SCANLINES OVERLAY --- */
 .Scanlines {
     position: fixed;
     top: 0; left: 0;
@@ -203,8 +187,8 @@ html {
   --bg: #050505;
   --surface: #111;
   --text: #e0e0e0;
-  --sun: #f9e400; /* Your bold yellow */
-  --accent: #00f0ff; /* Cyber Cyan */
+  --sun: #f9e400; 
+  --accent: #00f0ff;
   --border: #333;
 }
 
@@ -247,7 +231,7 @@ body {
   margin-bottom: 100px;
 }
 
-/* This creates the back-and-forth pattern */
+/* checkerboard pattern */
 .ProjectRow:nth-child(even) {
   flex-direction: row-reverse;
 }
@@ -327,7 +311,7 @@ body {
   }
 }
 
-/* Enable smooth scrolling for the whole page */
+/* smooth scrolling */
 html { 
     scroll-behavior: smooth; 
 }
@@ -336,7 +320,7 @@ html {
     scroll-margin-top: 100px;
 }
 
-/* The state triggered by your JS */
+/* state triggered by JS */
 .nav-hidden {
     transform: translateY(-100%);
 }
